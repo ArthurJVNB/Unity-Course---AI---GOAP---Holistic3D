@@ -1,6 +1,6 @@
 {
-    "name": "Project",
-    "rootNamespace": "Project",
+    "name": "Project.Features.AI.GOAP",
+    "rootNamespace": "Project.AI.GOAP",
     "references": [],
     "includePlatforms": [],
     "excludePlatforms": [],
