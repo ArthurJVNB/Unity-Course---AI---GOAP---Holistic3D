@@ -22,6 +22,8 @@ namespace Project.AI.GOAP
 
         [SerializeField] private bool _running = false;
 
+        public string ActionName => _actionName;
+
 		private void Awake()
 		{
 			Init();
