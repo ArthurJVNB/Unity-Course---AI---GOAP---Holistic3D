@@ -2903,6 +2903,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7880970886039044016}
   - component: {fileID: 1635687416280438780}
+  - component: {fileID: 2339887517937097894}
+  - component: {fileID: 1727735387797012349}
   m_Layer: 0
   m_Name: Patient
   m_TagString: Untagged
@@ -2948,6 +2950,43 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2339887517937097894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881807149238628900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce05e67ecef0904d8ad1460eedca2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actions: []
+  _currentAction: {fileID: 0}
+--- !u!114 &1727735387797012349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881807149238628900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49bb6f674477e6d40868af00426188d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Go to Hospital
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: 
+  _duration: 0
+  _preConditions: []
+  _afterEffects:
+  - Key: isWaiting
+    Value: 1
+  _agent: {fileID: 1635687416280438780}
+  _running: 0
 --- !u!1 &7927236269272520591
 GameObject:
   m_ObjectHideFlags: 0

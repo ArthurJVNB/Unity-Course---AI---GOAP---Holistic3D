@@ -48,6 +48,8 @@ namespace Project.AI.GOAP
 		{
 			_preConditionsDict = new();
 			_effects = new();
+			
+			if (!_agent) _agent = GetComponentInChildren<NavMeshAgent>();
 
 			if (_preConditions != null)
 				foreach (var condition in _preConditions)

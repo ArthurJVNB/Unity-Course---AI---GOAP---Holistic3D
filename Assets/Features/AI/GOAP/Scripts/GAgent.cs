@@ -8,7 +8,7 @@ namespace Project.AI.GOAP
 	public class GAgent : MonoBehaviour
 	{
 		[SerializeField] private List<GAction> _actions = new();
-		[SerializeField] private Dictionary<SubGoal, int> _goals = new();
+		[SerializeField] protected Dictionary<SubGoal, int> _goals = new();
 
 		private GPlanner _planner;
 		private Queue<GAction> _actionQueue;
@@ -17,12 +17,12 @@ namespace Project.AI.GOAP
 		private SubGoal _currentGoal;
 		private bool _invoked = false;
 
-		private void Start()
+		protected virtual void Start()
 		{
 			Init();
 		}
 
-		private void LateUpdate()
+		protected virtual void LateUpdate()
 		{
 			// If agent does have a plan
 			if (_currentAction != null && _currentAction.Running)
