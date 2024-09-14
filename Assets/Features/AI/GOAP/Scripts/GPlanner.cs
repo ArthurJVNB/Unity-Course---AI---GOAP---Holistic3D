@@ -56,9 +56,60 @@ namespace Project.AI.GOAP
 			return queue;
 		}
 
-		private bool BuildGraph(Node start, List<Node> leaves, List<GAction> usableActions, Dictionary<string, int> goal)
+		private bool BuildGraph(Node parent, List<Node> leaves, List<GAction> usableActions, Dictionary<string, int> goal)
 		{
-			throw new NotImplementedException();
+			bool foundPath = false;
+			
+			foreach (GAction action in usableActions)
+			{
+				if (action.IsAchievableGiven(parent.State))
+				{
+					Dictionary<string, int> currentState = new();
+					foreach (var effect in action.Effects)
+					{
+						if (currentState.ContainsKey(effect.Key)) continue;
+						currentState.Add(effect.Key, effect.Value);
+					}
+
+					Node node = new(parent, parent.Cost + action.Cost, currentState, action); // Next node
+
+					if (GoalAchieved(goal, currentState))
+					{
+						leaves.Add(node);
+						foundPath = true;
+					}
+					else
+					{
+						List<GAction> subset = ActionSubset(usableActions, action);
+						bool found = BuildGraph(node, leaves, subset, goal);
+						if (found)
+							foundPath = true;
+					}
+				}
+			}
+
+			return foundPath;
+		}
+
+		private bool GoalAchieved(Dictionary<string, int> goals, Dictionary<string, int> state)
+		{
+			foreach (var goal in goals)
+			{
+				if (!state.ContainsKey(goal.Key))
+					return false;
+			}
+			return true;
+		}
+
+		private List<GAction> ActionSubset(List<GAction> actions, GAction removeMe)
+		{
+			List<GAction> subset = new();
+			foreach (var action in actions)
+			{
+				if (action.Equals(removeMe)) continue;
+				subset.Add(action);
+			}
+			return subset;
 		}
 	}
 }

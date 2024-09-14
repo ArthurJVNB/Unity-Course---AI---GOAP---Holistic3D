@@ -23,6 +23,8 @@ namespace Project.AI.GOAP
         [SerializeField] private bool _running = false;
 
         public string ActionName => _actionName;
+        public Dictionary<string,int> Effects => _effects;
+        public float Cost => _cost;
 
 		private void Awake()
 		{
