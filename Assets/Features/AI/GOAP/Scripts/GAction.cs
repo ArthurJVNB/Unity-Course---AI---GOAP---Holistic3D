@@ -9,6 +9,7 @@ namespace Project.AI.GOAP
 		[SerializeField] private string _actionName = "Action";
 		[SerializeField] private float _cost = 1.0f;
 		[SerializeField] private GameObject _target;
+		[TagSelector]
 		[SerializeField] private string _targetTag;
 		[SerializeField] private float _duration = 0;
 		[SerializeField] private WorldState[] _preConditions;
