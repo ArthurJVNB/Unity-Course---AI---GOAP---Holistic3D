@@ -2905,6 +2905,8 @@ GameObject:
   - component: {fileID: 1635687416280438780}
   - component: {fileID: 2339887517937097894}
   - component: {fileID: 1727735387797012349}
+  - component: {fileID: 4605027809429156585}
+  - component: {fileID: 31121701039333959}
   m_Layer: 0
   m_Name: Patient
   m_TagString: Untagged
@@ -2979,13 +2981,63 @@ MonoBehaviour:
   _actionName: Go to Hospital
   _cost: 1
   _target: {fileID: 0}
-  _targetTag: 
-  _duration: 0
+  _targetTag: Door
+  _duration: 2
   _preConditions: []
   _afterEffects:
-  - Key: isWaiting
+  - Key: hasArrived
     Value: 1
   _agent: {fileID: 1635687416280438780}
+  _running: 0
+--- !u!114 &4605027809429156585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881807149238628900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0568a308210a946b2d8c7b98b48666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Go To Register
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Reception
+  _duration: 5
+  _preConditions:
+  - Key: hasArrived
+    Value: 0
+  _afterEffects:
+  - Key: hasRegistered
+    Value: 0
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &31121701039333959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881807149238628900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0e4cc5396acf46824a17de48c1713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Go To Waiting Room
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: WaitingArea
+  _duration: 0
+  _preConditions:
+  - Key: hasRegistered
+    Value: 0
+  _afterEffects:
+  - Key: isWaiting
+    Value: 0
+  _agent: {fileID: 0}
   _running: 0
 --- !u!1 &7927236269272520591
 GameObject:

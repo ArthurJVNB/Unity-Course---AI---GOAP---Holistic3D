@@ -1,6 +1,6 @@
 namespace Project.AI.GOAP
 {
-	public class GoToHospital : GAction
+	public class GoToWaitingRoom : GAction
 	{
 		public override bool PrePerform()
 		{
