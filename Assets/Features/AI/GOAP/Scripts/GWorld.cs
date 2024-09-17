@@ -2,8 +2,14 @@
 {
 	public sealed class GWorld
     {
-		private static readonly GWorld _instance = new();
-		private static WorldStates _world;
+		private static GWorld _instance = new();
+		private static readonly WorldStates _world;
+
+		[UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+		private static void Reset()
+		{
+			_instance = new();
+		}
 
 		static GWorld()
 		{
