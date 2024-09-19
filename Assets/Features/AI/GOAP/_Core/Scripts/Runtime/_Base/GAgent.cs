@@ -17,6 +17,11 @@ namespace Project.AI.GOAP
 		private SubGoal _currentGoal;
 		private bool _invoked = false;
 
+		public List<GAction> Actions => _actions;
+		public Queue<GAction> ActionQueue => _actionQueue;
+		public GAction CurrentAction => _currentAction;
+		public Dictionary<SubGoal, int> Goals => _goals;
+
 		protected virtual void Start()
 		{
 			Init();

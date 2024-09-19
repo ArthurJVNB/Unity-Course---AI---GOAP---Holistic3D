@@ -1,10 +1,11 @@
 namespace Project.AI.GOAP
 {
-	public class GoToWaitingRoom : GAction
+	public class GetPatient : GAction
 	{
 		public override bool PrePerform()
 		{
-			return true;
+			Target = GWorld.RemovePatient();
+			return Target;
 		}
 
 		public override bool PostPerform()
