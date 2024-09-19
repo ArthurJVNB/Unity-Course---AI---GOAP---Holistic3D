@@ -1,0 +1,16 @@
+{
+    "name": "Project.Features.AI.GOAP.Core",
+    "rootNamespace": "Project.AI.GOAP",
+    "references": [
+        "GUID:d3c517d019d8c0b439e7492c6589d610"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

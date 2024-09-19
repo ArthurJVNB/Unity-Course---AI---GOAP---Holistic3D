@@ -1,10 +1,12 @@
 {
-    "name": "Project.Features.AI.GOAP",
-    "rootNamespace": "Project.AI.GOAP",
+    "name": "Project.Features.AI.GOAP.Core.Editor",
+    "rootNamespace": "Project.AI.GOAP.Editor",
     "references": [
-        "GUID:d3c517d019d8c0b439e7492c6589d610"
+        "GUID:c45ec5a9ca63d71439c40e090fc74684"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

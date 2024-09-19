@@ -39,6 +39,7 @@ namespace Project.AI.GOAP
 			set => _target = value;
 		}
 		public string TargetTag => _targetTag;
+		public Dictionary<string, int> PreConditions => _preConditionsDict;
 
 		private void Awake()
 		{
