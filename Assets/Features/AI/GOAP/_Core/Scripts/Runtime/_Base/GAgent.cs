@@ -9,6 +9,7 @@ namespace Project.AI.GOAP
 	{
 		[SerializeField] private List<GAction> _actions = new();
 		[SerializeField] protected Dictionary<SubGoal, int> _goals = new();
+		[SerializeField] private GInventory _inventory = new();
 
 		private GPlanner _planner;
 		private Queue<GAction> _actionQueue;
@@ -21,6 +22,7 @@ namespace Project.AI.GOAP
 		public Queue<GAction> ActionQueue => _actionQueue;
 		public GAction CurrentAction => _currentAction;
 		public Dictionary<SubGoal, int> Goals => _goals;
+		public GInventory Inventory => _inventory;
 
 		protected virtual void Start()
 		{

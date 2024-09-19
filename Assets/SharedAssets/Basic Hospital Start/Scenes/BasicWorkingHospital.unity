@@ -1301,14 +1301,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cubicle (3)
       objectReference: {fileID: 0}
-    - target: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
-      propertyPath: m_TagString
-      value: Cubicle
-      objectReference: {fileID: 0}
-    - target: {fileID: 5874423910086712904, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6558310076933162121, guid: 1b134b1c5bdecf14e936ab0619fcf833, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -1818,6 +1810,8 @@ MonoBehaviour:
   _duration: 1
   _preConditions:
   - Key: Waiting
+    Value: 1
+  - Key: FreeCubicle
     Value: 1
   _afterEffects:
   - Key: treatPatient

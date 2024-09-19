@@ -21,25 +21,39 @@ namespace Project.AI.GOAP
 
 		[SerializeField] private WorldStates _agentBeliefs;
 
+		[SerializeField] private GInventory _inventory;
+
 		[SerializeField] private bool _running = false;
 
+		#region Public Properties
 		public string ActionName => _actionName;
 		public Dictionary<string, int> Effects => _effects;
 		public float Cost => _cost;
+
 		public bool Running
 		{
 			get => _running;
 			set => _running = value;
 		}
+
 		public NavMeshAgent Agent => _agent;
 		public float Duration => _duration;
+
 		public GameObject Target
 		{
 			get => _target;
 			set => _target = value;
 		}
+
 		public string TargetTag => _targetTag;
 		public Dictionary<string, int> PreConditions => _preConditionsDict;
+
+		public GInventory Inventory
+		{
+			get => _inventory;
+			set => _inventory = value;
+		}
+		#endregion
 
 		protected virtual void Reset()
 		{
@@ -65,6 +79,8 @@ namespace Project.AI.GOAP
 			if (_afterEffects != null)
 				foreach (var afterEffect in _afterEffects)
 					_effects.Add(afterEffect.Key, afterEffect.Value);
+
+			_inventory = GetComponentInChildren<GAgent>().Inventory;
 		}
 
 		public bool IsAchievable()

@@ -9,7 +9,6 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
-			GWorld.World.ModifyStates("Waiting", 1);
 			GWorld.AddPatient(gameObject);
 			return true;
 		}

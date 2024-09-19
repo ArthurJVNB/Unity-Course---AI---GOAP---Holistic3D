@@ -8,13 +8,16 @@ namespace Project.AI.GOAP
 		private static GWorld _instance;
 		private static WorldStates _world;
 		private static Queue<GameObject> _patients;
+		private static Queue<GameObject> _cubicles;
 
-		[UnityEngine.RuntimeInitializeOnLoadMethod(UnityEngine.RuntimeInitializeLoadType.SubsystemRegistration)]
+		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 		private static void Reset()
 		{
+			_patients = null;
+			_cubicles = null;
+
 			_instance = new();
 			_world = new();
-			_patients = new();
 		}
 
 		static GWorld()
@@ -31,16 +34,37 @@ namespace Project.AI.GOAP
 
 		public WorldStates GetWorld() => _world;
 
+		#region Patients
 		public static void AddPatient(GameObject patient)
 		{
 			_patients ??= new();
 			_patients.Enqueue(patient);
+			World.ModifyStates("Waiting", 1);
 		}
 
 		public static GameObject RemovePatient()
 		{
 			if (_patients == null || _patients.Count == 0) return null;
+			World.ModifyStates("Waiting", -1);
 			return _patients.Dequeue();
 		}
+		#endregion
+
+		#region Cubicles
+		public static void AddCubicle(GameObject cubicle)
+		{
+			_cubicles ??= new();
+			_cubicles.Enqueue(cubicle);
+			Debug.Log(_cubicles.Count);
+			World.ModifyStates("FreeCubicle", 1);
+		}
+
+		public static GameObject RemoveCubicle()
+		{
+			if (_cubicles == null || _cubicles.Count == 0) return null;
+			World.ModifyStates("FreeCubicle", -1);
+			return _cubicles.Dequeue();
+		}
+		#endregion
 	}
 }
