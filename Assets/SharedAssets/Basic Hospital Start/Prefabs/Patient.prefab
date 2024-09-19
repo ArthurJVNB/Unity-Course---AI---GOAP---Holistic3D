@@ -2968,7 +2968,7 @@ MonoBehaviour:
   _cost: 1
   _target: {fileID: 0}
   _targetTag: Door
-  _duration: 2
+  _duration: 1
   _preConditions: []
   _afterEffects:
   - Key: hasArrived
@@ -2991,7 +2991,7 @@ MonoBehaviour:
   _cost: 1
   _target: {fileID: 0}
   _targetTag: Reception
-  _duration: 5
+  _duration: 1
   _preConditions:
   - Key: hasArrived
     Value: 0

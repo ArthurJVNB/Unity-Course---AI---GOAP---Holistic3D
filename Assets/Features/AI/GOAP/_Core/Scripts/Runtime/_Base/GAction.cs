@@ -41,7 +41,12 @@ namespace Project.AI.GOAP
 		public string TargetTag => _targetTag;
 		public Dictionary<string, int> PreConditions => _preConditionsDict;
 
-		private void Awake()
+		protected virtual void Reset()
+		{
+			_actionName = GetType().Name;
+		}
+
+		protected virtual void Awake()
 		{
 			Init();
 		}
