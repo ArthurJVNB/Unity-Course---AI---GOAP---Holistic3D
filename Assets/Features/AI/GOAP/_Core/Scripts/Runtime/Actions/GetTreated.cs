@@ -13,6 +13,7 @@ namespace Project.AI.GOAP
 		public override bool PostPerform()
 		{
 			GWorld.World.ModifyState("isTreated", 1);
+			Beliefs.ModifyState("isCured", 1);
 			Inventory.RemoveItem(Target);
 			return true;
 		}

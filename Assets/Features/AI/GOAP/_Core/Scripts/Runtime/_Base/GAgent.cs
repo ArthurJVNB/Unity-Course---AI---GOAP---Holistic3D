@@ -37,7 +37,7 @@ namespace Project.AI.GOAP
 			if (_currentAction != null && _currentAction.Running)
 			{
 				// If agent has a path and reached the goal
-				const float MIN_REACHED_DISTANCE = 1f;
+				const float MIN_REACHED_DISTANCE = 2f;
 				if (_currentAction.Agent.hasPath && _currentAction.Agent.remainingDistance < MIN_REACHED_DISTANCE)
 				{
 					if (!_invoked)

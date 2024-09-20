@@ -78,12 +78,25 @@ namespace Project.AI.GOAP
 
 				GUILayout.Label("====  " + a.ActionName + "(" + pre + ")(" + eff + ")");
 			}
+
 			GUILayout.Label("Goals: ");
 			foreach (KeyValuePair<SubGoal, int> g in agent.gameObject.GetComponent<GAgent>().Goals)
 			{
 				GUILayout.Label("---: ");
 				foreach (KeyValuePair<string, int> sg in g.Key.SGoals)
 					GUILayout.Label("=====  " + sg.Key);
+			}
+
+			GUILayout.Label("Beliefs: ");
+			foreach (KeyValuePair<string, int> sg in agent.gameObject.GetComponent<GAgent>().Beliefs.GetStates())
+			{
+				GUILayout.Label("=====  " + sg.Key);
+			}
+
+			GUILayout.Label("Inventory: ");
+			foreach (GameObject g in agent.gameObject.GetComponent<GAgent>().Inventory.Items)
+			{
+				GUILayout.Label("====  " + g.tag);
 			}
 			serializedObject.ApplyModifiedProperties();
 		}

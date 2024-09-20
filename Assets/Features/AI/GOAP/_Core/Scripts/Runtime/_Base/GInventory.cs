@@ -7,6 +7,8 @@ namespace Project.AI.GOAP
     {
         private List<GameObject> _items = new();
 
+        public List<GameObject> Items => _items;
+
         public void AddItem(GameObject item)
         {
             _items.Add(item);

@@ -7,7 +7,7 @@ namespace Project.AI.GOAP
 		protected override void Start()
 		{
 			base.Start();
-			_goals.Add(new SubGoal("treatPatient", 1, true), 3);
+			_goals.Add(new SubGoal("treatPatient", 1, false), 3);
 		}
 	}
 }

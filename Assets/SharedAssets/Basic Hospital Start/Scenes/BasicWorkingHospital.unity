@@ -234,22 +234,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1464892526}
     m_Modifications:
-    - target: {fileID: 1635687416280438780, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-      propertyPath: m_Speed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635687416280438780, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-      propertyPath: m_Acceleration
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635687416280438780, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 1635687416280438780, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7880970886039044016, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -20
@@ -1162,22 +1146,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse
       objectReference: {fileID: 0}
-    - target: {fileID: 4847754130438738623, guid: 51e437be22296b340954bf6591a60065, type: 3}
-      propertyPath: m_Speed
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4847754130438738623, guid: 51e437be22296b340954bf6591a60065, type: 3}
-      propertyPath: m_Acceleration
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4847754130438738623, guid: 51e437be22296b340954bf6591a60065, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 240
-      objectReference: {fileID: 0}
-    - target: {fileID: 4847754130438738623, guid: 51e437be22296b340954bf6591a60065, type: 3}
-      propertyPath: m_StoppingDistance
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1650,8 +1618,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.30498275, y: -0.6431776, z: 0.3116416, w: 0.6294343}
-  m_LocalPosition: {x: 6.217749, y: 18.155775, z: -19.052258}
+  m_LocalRotation: {x: 0.3463487, y: -0.615967, z: 0.3455168, w: 0.6174508}
+  m_LocalPosition: {x: 5.674028, y: 30.61321, z: -17.491503}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2058,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patientPrefab: {fileID: 7881807149238628900, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-  _numPatients: 0
+  _numPatients: 7
 --- !u!4 &1104772353
 Transform:
   m_ObjectHideFlags: 0

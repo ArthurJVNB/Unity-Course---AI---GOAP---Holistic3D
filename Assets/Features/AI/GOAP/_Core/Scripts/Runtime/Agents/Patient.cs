@@ -15,6 +15,7 @@ namespace Project.AI.GOAP
 		{
 			_goals.Add(new SubGoal("isWaiting", 1, true), 3);
 			_goals.Add(new SubGoal("isTreated", 1, true), 5);
+			_goals.Add(new SubGoal("isHome", 1, true), 3);
 		}
 	}
 }
