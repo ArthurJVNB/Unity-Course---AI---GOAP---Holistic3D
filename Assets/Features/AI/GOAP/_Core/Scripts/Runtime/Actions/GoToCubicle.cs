@@ -1,6 +1,6 @@
 namespace Project.AI.GOAP
 {
-	public class Treat : GAction
+	public class GoToCubicle : GAction
 	{
 		public override bool PrePerform()
 		{
@@ -10,6 +10,8 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
+			GWorld.World.ModifyState("TreatingPatient", 1);
+			GWorld.AddCubicle(Target);
 			Inventory.RemoveItem(Target);
 			return true;
 		}

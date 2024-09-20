@@ -3043,7 +3043,7 @@ MonoBehaviour:
   _cost: 1
   _target: {fileID: 0}
   _targetTag: 
-  _duration: 0
+  _duration: 5
   _preConditions:
   - Key: atHospital
     Value: 0

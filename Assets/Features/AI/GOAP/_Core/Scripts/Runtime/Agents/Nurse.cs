@@ -8,7 +8,6 @@ namespace Project.AI.GOAP
 		{
 			base.Start();
 			_goals.Add(new SubGoal("treatPatient", 1, true), 3);
-			_goals.Add(new SubGoal("Waiting", 1, true), 1);
 		}
 	}
 }

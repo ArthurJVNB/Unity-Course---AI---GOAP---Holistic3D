@@ -1152,7 +1152,7 @@ MonoBehaviour:
   - Key: FreeCubicle
     Value: 1
   _afterEffects:
-  - Key: treatPatient
+  - Key: patientPickedup
     Value: 1
   _agent: {fileID: 0}
   _running: 0
@@ -1172,12 +1172,12 @@ MonoBehaviour:
   _cost: 1
   _target: {fileID: 0}
   _targetTag: 
-  _duration: 0
+  _duration: 8
   _preConditions:
-  - Key: treatPatient
+  - Key: patientPickedup
     Value: 1
   _afterEffects:
-  - Key: Waiting
+  - Key: treatPatient
     Value: 1
   _agent: {fileID: 0}
   _running: 0
