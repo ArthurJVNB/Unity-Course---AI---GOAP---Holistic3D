@@ -13,8 +13,8 @@ namespace Project.AI.GOAP
 
 		private void InitGoals()
 		{
-			SubGoal subGoal1 = new("isWaiting", 1, true);
-			_goals.Add(subGoal1, 3);
+			_goals.Add(new SubGoal("isWaiting", 1, true), 3);
+			_goals.Add(new SubGoal("isTreated", 1, true), 5);
 		}
 	}
 }

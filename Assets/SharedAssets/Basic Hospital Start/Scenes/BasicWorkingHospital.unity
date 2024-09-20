@@ -281,10 +281,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7881807149238628900, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1032496889}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
 --- !u!4 &163079960 stripped
 Transform:
@@ -1152,13 +1149,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1021438515}
-    - targetCorrespondingSourceObject: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1021438517}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e437be22296b340954bf6591a60065, type: 3}
 --- !u!4 &789032088 stripped
 Transform:
@@ -1786,67 +1777,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1840417231}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1021438513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
-  m_PrefabInstance: {fileID: 789032087}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1021438515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021438513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b9f27c95f5833a43981ede749a672fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actionName: Get Patient
-  _cost: 1
-  _target: {fileID: 0}
-  _targetTag: 
-  _duration: 1
-  _preConditions:
-  - Key: Waiting
-    Value: 1
-  - Key: FreeCubicle
-    Value: 1
-  _afterEffects:
-  - Key: treatPatient
-    Value: 1
-  _agent: {fileID: 0}
-  _running: 0
---- !u!114 &1021438517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1021438513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1032496883 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7881807149238628900, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-  m_PrefabInstance: {fileID: 163079959}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1032496889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032496883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1034050901
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,7 +2026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _patientPrefab: {fileID: 7881807149238628900, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
-  _numPatients: 0
+  _numPatients: 3
 --- !u!4 &1104772353
 Transform:
   m_ObjectHideFlags: 0

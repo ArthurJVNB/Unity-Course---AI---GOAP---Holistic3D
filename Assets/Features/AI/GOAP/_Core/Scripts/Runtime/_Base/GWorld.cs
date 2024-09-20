@@ -39,13 +39,13 @@ namespace Project.AI.GOAP
 		{
 			_patients ??= new();
 			_patients.Enqueue(patient);
-			World.ModifyStates("Waiting", 1);
+			World.ModifyState("Waiting", 1);
 		}
 
 		public static GameObject RemovePatient()
 		{
 			if (_patients == null || _patients.Count == 0) return null;
-			World.ModifyStates("Waiting", -1);
+			World.ModifyState("Waiting", -1);
 			return _patients.Dequeue();
 		}
 		#endregion
@@ -56,13 +56,13 @@ namespace Project.AI.GOAP
 			_cubicles ??= new();
 			_cubicles.Enqueue(cubicle);
 			Debug.Log(_cubicles.Count);
-			World.ModifyStates("FreeCubicle", 1);
+			World.ModifyState("FreeCubicle", 1);
 		}
 
 		public static GameObject RemoveCubicle()
 		{
 			if (_cubicles == null || _cubicles.Count == 0) return null;
-			World.ModifyStates("FreeCubicle", -1);
+			World.ModifyState("FreeCubicle", -1);
 			return _cubicles.Dequeue();
 		}
 		#endregion

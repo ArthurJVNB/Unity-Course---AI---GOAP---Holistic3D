@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 namespace Project.AI.GOAP
 {
+	[RequireComponent(typeof(GAgent))]
 	public abstract class GAction : MonoBehaviour
 	{
 		[SerializeField] private string _actionName = "Action";
@@ -22,6 +23,7 @@ namespace Project.AI.GOAP
 		[SerializeField] private WorldStates _agentBeliefs;
 
 		[SerializeField] private GInventory _inventory;
+		[SerializeField] private WorldStates _beliefs;
 
 		[SerializeField] private bool _running = false;
 
@@ -53,6 +55,12 @@ namespace Project.AI.GOAP
 			get => _inventory;
 			set => _inventory = value;
 		}
+
+		protected WorldStates Beliefs
+		{
+			get => _beliefs;
+			set => _beliefs = value;
+		}
 		#endregion
 
 		protected virtual void Reset()
@@ -80,7 +88,9 @@ namespace Project.AI.GOAP
 				foreach (var afterEffect in _afterEffects)
 					_effects.Add(afterEffect.Key, afterEffect.Value);
 
-			_inventory = GetComponentInChildren<GAgent>().Inventory;
+			GAgent agent = GetComponent<GAgent>();
+			_inventory = agent.Inventory;
+			_beliefs = agent.Beliefs;
 		}
 
 		public bool IsAchievable()

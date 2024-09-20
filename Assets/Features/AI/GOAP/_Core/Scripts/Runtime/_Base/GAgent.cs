@@ -10,6 +10,7 @@ namespace Project.AI.GOAP
 		[SerializeField] private List<GAction> _actions = new();
 		[SerializeField] protected Dictionary<SubGoal, int> _goals = new();
 		[SerializeField] private GInventory _inventory = new();
+		[SerializeField] private WorldStates _beliefs = new();
 
 		private GPlanner _planner;
 		private Queue<GAction> _actionQueue;
@@ -23,6 +24,7 @@ namespace Project.AI.GOAP
 		public GAction CurrentAction => _currentAction;
 		public Dictionary<SubGoal, int> Goals => _goals;
 		public GInventory Inventory => _inventory;
+		public WorldStates Beliefs => _beliefs;
 
 		protected virtual void Start()
 		{
@@ -56,7 +58,7 @@ namespace Project.AI.GOAP
 				var sortedGoals = _goals?.OrderByDescending(v => v.Value); // My code. Same as commented line above
 				foreach (var goal in sortedGoals)
 				{
-					_actionQueue = _planner.Plan(_actions, goal.Key.SGoals, null);
+					_actionQueue = _planner.Plan(_actions, goal.Key.SGoals, _beliefs);
 					if (_actionQueue == null) continue;
 					_currentGoal = goal.Key;
 					break;

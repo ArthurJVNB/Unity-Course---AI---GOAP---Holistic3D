@@ -1,16 +1,16 @@
 namespace Project.AI.GOAP
 {
-	public class GoToWaitingRoom : GAction
+	public class Treat : GAction
 	{
 		public override bool PrePerform()
 		{
-			return true;
+			Target = Inventory.FindItemWithTag("Cubicle");
+			return Target;
 		}
 
 		public override bool PostPerform()
 		{
-			GWorld.AddPatient(gameObject);
-			Beliefs.ModifyState("atHospital", 1);
+			Inventory.RemoveItem(Target);
 			return true;
 		}
 	}

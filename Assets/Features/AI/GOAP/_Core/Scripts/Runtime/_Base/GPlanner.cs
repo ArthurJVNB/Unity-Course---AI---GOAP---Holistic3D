@@ -6,7 +6,7 @@ namespace Project.AI.GOAP
 {
 	public class GPlanner
 	{
-		public Queue<GAction> Plan(List<GAction> actions, Dictionary<string, int> goal, WorldStates states)
+		public Queue<GAction> Plan(List<GAction> actions, Dictionary<string, int> goal, WorldStates beliefStates)
 		{
 			List<GAction> usableActions = new();
 			foreach (GAction action in actions)
@@ -16,7 +16,7 @@ namespace Project.AI.GOAP
 			}
 
 			List<Node> leaves = new();
-			Node start = new(null, 0, GWorld.Instance.GetWorld().GetStates(), null);
+			Node start = new(null, 0, GWorld.Instance.GetWorld().GetStates(), beliefStates.GetStates(), null);
 
 			bool success = BuildGraph(start, leaves, usableActions, goal);
 

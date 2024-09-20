@@ -25,7 +25,7 @@ namespace Project.AI.GOAP
 		}
 
 		// ModifyState
-		public void ModifyStates(string key, int value)
+		public void ModifyState(string key, int value)
 		{
 			if (HasState(key))
 			{

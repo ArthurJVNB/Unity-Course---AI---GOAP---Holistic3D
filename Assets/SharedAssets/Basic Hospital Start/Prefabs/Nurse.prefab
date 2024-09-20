@@ -1080,7 +1080,10 @@ GameObject:
   m_Component:
   - component: {fileID: 177407082141715887}
   - component: {fileID: 4847754130438738623}
+  - component: {fileID: 5910310483961742918}
+  - component: {fileID: 6650823500022758944}
   - component: {fileID: 5473820789244002802}
+  - component: {fileID: 6869226553612492709}
   m_Layer: 0
   m_Name: Nurse
   m_TagString: Untagged
@@ -1126,6 +1129,58 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5910310483961742918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b9f27c95f5833a43981ede749a672fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Get Patient
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: 
+  _duration: 1
+  _preConditions:
+  - Key: Waiting
+    Value: 1
+  - Key: FreeCubicle
+    Value: 1
+  _afterEffects:
+  - Key: treatPatient
+    Value: 1
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &6650823500022758944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057ce9917d55a2e46abe7fa97c1f71f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Treat
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: 
+  _duration: 0
+  _preConditions:
+  - Key: treatPatient
+    Value: 1
+  _afterEffects:
+  - Key: Waiting
+    Value: 1
+  _agent: {fileID: 0}
+  _running: 0
 --- !u!114 &5473820789244002802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1140,6 +1195,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actions: []
   _currentAction: {fileID: 0}
+--- !u!114 &6869226553612492709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2629889911763255196
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,8 +13,23 @@ namespace Project.AI.GOAP
 		{
 			Parent = parent;
 			Cost = cost;
-			State = new(allStates); // copy of the dictionary
+			State = new(allStates); // copy of the dictionary // allStates == world states
 			Action = action;
+		}
+
+		public Node(Node parent, float cost, Dictionary<string, int> allStates, Dictionary<string, int> beliefStates, GAction action)
+		{
+			Parent = parent;
+			Cost = cost;
+			State = new(allStates); // copy of the dictionary // allStates == world states
+			Action = action;
+
+			// Adding beliefs to states
+			if (beliefStates != null)
+			{
+				foreach (var belief in beliefStates)
+					State.TryAdd(belief.Key, belief.Value);
+			}
 		}
 	}
 }
