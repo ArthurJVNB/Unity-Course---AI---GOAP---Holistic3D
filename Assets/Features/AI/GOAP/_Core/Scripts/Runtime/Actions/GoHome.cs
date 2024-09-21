@@ -11,6 +11,7 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
+			Destroy(gameObject);
 			return true;
 		}
 	}

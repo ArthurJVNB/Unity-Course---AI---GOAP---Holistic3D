@@ -7,13 +7,19 @@ namespace Project.AI.GOAP
 		[SerializeField] private GameObject _patientPrefab;
 		[Min(0)]
 		[SerializeField] private int _numPatients = 1;
+		[Min(0)]
+		[SerializeField] private float _timeBetweenWaves = 2;
 
 		private void Start()
 		{
+			SpawnWave();
+		}
+
+		private void SpawnWave()
+		{
 			for (int i = 0; i < _numPatients; i++)
-			{
 				SpawnPatient();
-			}
+			Invoke(nameof(SpawnWave), _timeBetweenWaves);
 		}
 
 		private void SpawnPatient()
