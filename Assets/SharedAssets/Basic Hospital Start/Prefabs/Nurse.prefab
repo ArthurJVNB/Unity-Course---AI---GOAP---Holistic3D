@@ -1082,6 +1082,7 @@ GameObject:
   - component: {fileID: 4847754130438738623}
   - component: {fileID: 5910310483961742918}
   - component: {fileID: 6650823500022758944}
+  - component: {fileID: 5052672971367005142}
   - component: {fileID: 5473820789244002802}
   - component: {fileID: 6869226553612492709}
   m_Layer: 0
@@ -1179,6 +1180,31 @@ MonoBehaviour:
   _afterEffects:
   - Key: treatPatient
     Value: 1
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &5052672971367005142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989917604ad53264fbdbd5202e31477d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Rest
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Lounge
+  _duration: 5
+  _preConditions:
+  - Key: exhausted
+    Value: 0
+  _afterEffects:
+  - Key: rested
+    Value: 0
   _agent: {fileID: 0}
   _running: 0
 --- !u!114 &5473820789244002802

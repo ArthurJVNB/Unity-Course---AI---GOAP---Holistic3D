@@ -8,6 +8,20 @@ namespace Project.AI.GOAP
 		{
 			base.Start();
 			_goals.Add(new SubGoal("treatPatient", 1, false), 3);
+			_goals.Add(new SubGoal("rested", 1, false), 1);
+
+			InvokeGetTired();
+		}
+
+		private void InvokeGetTired()
+		{
+			Invoke(nameof(GetTired), Random.Range(10, 20));
+		}
+
+		private void GetTired()
+		{
+			Beliefs.ModifyState("exhausted", 0);
+			InvokeGetTired();
 		}
 	}
 }
