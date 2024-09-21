@@ -38,7 +38,7 @@ namespace Project.AI.GOAP
 		}
 
 		// RemoveState
-		private void RemoveState(string key)
+		public void RemoveState(string key)
 		{
 			States.Remove(key);
 		}

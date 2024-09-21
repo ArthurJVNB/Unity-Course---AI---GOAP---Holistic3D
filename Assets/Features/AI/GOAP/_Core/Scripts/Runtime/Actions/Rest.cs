@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Project.AI.GOAP
 {
-	public class GoHome : GAction
+	public class Rest : GAction
 	{
 		public override bool PrePerform()
 		{
@@ -11,7 +11,7 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
-			Destroy(gameObject);
+			Beliefs.RemoveState("exhausted");
 			return true;
 		}
 	}
