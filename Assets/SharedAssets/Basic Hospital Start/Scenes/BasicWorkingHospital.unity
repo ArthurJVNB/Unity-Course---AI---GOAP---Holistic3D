@@ -278,6 +278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patient
       objectReference: {fileID: 0}
+    - target: {fileID: 7881807149238628900, guid: d36c43225f9391e4c8810c98eb7ef85e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -450,6 +454,10 @@ PrefabInstance:
     - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
       propertyPath: m_Name
       value: Nurse_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -837,6 +845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse_3
       objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1110,6 +1122,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse_5
       objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1365,6 +1381,10 @@ PrefabInstance:
     - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
       propertyPath: m_Name
       value: Nurse
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1739,6 +1759,10 @@ PrefabInstance:
     - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
       propertyPath: m_Name
       value: Nurse_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2266,6 +2290,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse_1
       objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2292,7 +2320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1104772352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2561,10 +2589,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1144783309}
+    - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144783312}
+    - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1144783310}
     - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1144783309}
+      addedObject: {fileID: 1144783313}
   m_SourcePrefab: {fileID: 100100000, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
 --- !u!4 &1144783307 stripped
 Transform:
@@ -2615,6 +2649,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actions: []
   _currentAction: {fileID: 0}
+--- !u!114 &1144783312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144783308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ee971cf2edadb4bbb81c4018c4fbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Research
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Office
+  _duration: 5
+  _preConditions:
+  - Key: FreeOffice
+    Value: 0
+  _afterEffects:
+  - Key: research
+    Value: 0
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &1144783313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144783308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184113935
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,6 +4378,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse_6
       objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4882,6 +4957,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nurse_7
       objectReference: {fileID: 0}
+    - target: {fileID: 2618188073631541129, guid: 51e437be22296b340954bf6591a60065, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4906,7 +4985,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1902488482324367822, guid: a32ea837f7a0649dc8c4040fa1a4170a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.98
+      value: 42.66021
       objectReference: {fileID: 0}
     - target: {fileID: 1902488482324367822, guid: a32ea837f7a0649dc8c4040fa1a4170a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4914,7 +4993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1902488482324367822, guid: a32ea837f7a0649dc8c4040fa1a4170a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.91
+      value: 23.83362
       objectReference: {fileID: 0}
     - target: {fileID: 1902488482324367822, guid: a32ea837f7a0649dc8c4040fa1a4170a, type: 3}
       propertyPath: m_LocalRotation.w

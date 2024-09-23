@@ -7,6 +7,7 @@ namespace Project.AI.GOAP
 		protected override void Start()
 		{
 			base.Start();
+			_goals.Add(new SubGoal("research", 1, false), 1);
 			_goals.Add(new SubGoal("rested", 1, false), 3);
 
 			InvokeGetTired();
@@ -14,7 +15,7 @@ namespace Project.AI.GOAP
 
 		private void InvokeGetTired()
 		{
-			Invoke(nameof(GetTired), Random.Range(10, 20));
+			Invoke(nameof(GetTired), Random.Range(2, 5));
 		}
 
 		private void GetTired()

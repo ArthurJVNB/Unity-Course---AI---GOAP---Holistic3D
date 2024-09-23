@@ -57,7 +57,6 @@ namespace Project.AI.GOAP
 		{
 			_cubicles ??= new();
 			_cubicles.Enqueue(cubicle);
-			Debug.Log(_cubicles.Count);
 			World.ModifyState("FreeCubicle", 1);
 		}
 
@@ -74,7 +73,6 @@ namespace Project.AI.GOAP
 		{
 			_offices ??= new();
 			_offices.Enqueue(office);
-			Debug.Log(_offices.Count);
 			World.ModifyState("FreeOffice", 1);
 		}
 
