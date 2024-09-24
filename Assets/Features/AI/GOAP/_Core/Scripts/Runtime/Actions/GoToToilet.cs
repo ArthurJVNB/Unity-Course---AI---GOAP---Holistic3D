@@ -17,6 +17,7 @@ namespace Project.AI.GOAP
 			GWorld.AddToilet(Target);
 			Inventory.RemoveItem(Target);
 			Target = null;
+			Beliefs.RemoveState("needRelief");
 			return true;
 		}
 	}

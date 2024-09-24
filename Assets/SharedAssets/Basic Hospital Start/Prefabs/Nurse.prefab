@@ -1083,6 +1083,7 @@ GameObject:
   - component: {fileID: 5910310483961742918}
   - component: {fileID: 6650823500022758944}
   - component: {fileID: 5052672971367005142}
+  - component: {fileID: 7334125174150204525}
   - component: {fileID: 5473820789244002802}
   - component: {fileID: 6869226553612492709}
   m_Layer: 0
@@ -1204,6 +1205,33 @@ MonoBehaviour:
     Value: 0
   _afterEffects:
   - Key: rested
+    Value: 0
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &7334125174150204525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2325438a75dd41489c0acd8ab38b65a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Go To Toilet
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Toilet
+  _duration: 5
+  _preConditions:
+  - Key: FreeToilet
+    Value: 0
+  - Key: needRelief
+    Value: 0
+  _afterEffects:
+  - Key: relief
     Value: 0
   _agent: {fileID: 0}
   _running: 0

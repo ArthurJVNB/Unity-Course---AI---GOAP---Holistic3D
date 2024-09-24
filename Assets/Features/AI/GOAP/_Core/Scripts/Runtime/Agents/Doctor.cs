@@ -9,10 +9,10 @@ namespace Project.AI.GOAP
 			base.Start();
 			_goals.Add(new SubGoal("research", 1, false), 1);
 			_goals.Add(new SubGoal("rested", 1, false), 3);
-			_goals.Add(new SubGoal("toilet", 1, false), 3);
+			_goals.Add(new SubGoal("relief", 1, false), 3);
 
 			InvokeGetTired();
-			InvokeNeedToPiss();
+			InvokeNeedRelief();
 		}
 
 		private void InvokeGetTired()
@@ -26,16 +26,15 @@ namespace Project.AI.GOAP
 			InvokeGetTired();
 		}
 
-		private void InvokeNeedToPiss()
+		private void InvokeNeedRelief()
 		{
-			Invoke(nameof(NeedToPiss), Random.Range(20, 30));
+			Invoke(nameof(NeedRelief), Random.Range(20, 30));
 		}
 
-		private void NeedToPiss()
+		private void NeedRelief()
 		{
-			Debug.Log("Need To Piss");
-			Beliefs.ModifyState("needToPiss", 0);
-			InvokeNeedToPiss();
+			Beliefs.ModifyState("needRelief", 0);
+			InvokeNeedRelief();
 		}
 	}
 }
