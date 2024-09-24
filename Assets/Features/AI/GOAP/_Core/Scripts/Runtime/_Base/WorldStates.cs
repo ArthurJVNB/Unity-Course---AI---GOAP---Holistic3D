@@ -21,7 +21,7 @@ namespace Project.AI.GOAP
 		// AddState
 		public void AddState(string key, int value)
 		{
-			States.Add(key, value);
+			States.TryAdd(key, value);
 		}
 
 		// ModifyState

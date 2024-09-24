@@ -17,23 +17,23 @@ namespace Project.AI.GOAP
 
 		private void InvokeGetTired()
 		{
-			Invoke(nameof(GetTired), Random.Range(20, 30));
+			Invoke(nameof(GetTired), Random.Range(50, 60));
 		}
 
 		private void GetTired()
 		{
-			Beliefs.ModifyState("exhausted", 0);
+			Beliefs.AddState("exhausted", 0);
 			InvokeGetTired();
 		}
 
 		private void InvokeNeedRelief()
 		{
-			Invoke(nameof(NeedRelief), Random.Range(20, 30));
+			Invoke(nameof(NeedRelief), Random.Range(60, 120));
 		}
 
 		private void NeedRelief()
 		{
-			Beliefs.ModifyState("needRelief", 0);
+			Beliefs.AddState("needRelief", 0);
 			InvokeNeedRelief();
 		}
 	}

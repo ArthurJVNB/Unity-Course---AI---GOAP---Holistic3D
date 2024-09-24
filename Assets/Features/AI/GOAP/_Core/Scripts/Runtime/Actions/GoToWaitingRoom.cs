@@ -10,7 +10,7 @@ namespace Project.AI.GOAP
 		public override bool PostPerform()
 		{
 			GWorld.AddPatient(gameObject);
-			Beliefs.ModifyState("atHospital", 1);
+			//Beliefs.ModifyState("atHospital", 1);
 			return true;
 		}
 	}

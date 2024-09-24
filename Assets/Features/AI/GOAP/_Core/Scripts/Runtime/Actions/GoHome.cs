@@ -6,12 +6,13 @@ namespace Project.AI.GOAP
 	{
 		public override bool PrePerform()
 		{
+			Beliefs.RemoveState("atHospital");
 			return true;
 		}
 
 		public override bool PostPerform()
 		{
-			Destroy(gameObject);
+			//Destroy(gameObject);
 			return true;
 		}
 	}

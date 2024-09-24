@@ -9,6 +9,7 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
+			Beliefs.ModifyState("atHospital", 1);
 			return true;
 		}
 	}

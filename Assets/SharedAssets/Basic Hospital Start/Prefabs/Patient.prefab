@@ -3101,6 +3101,8 @@ MonoBehaviour:
     Value: 0
   - Key: needRelief
     Value: 0
+  - Key: atHospital
+    Value: 0
   _afterEffects:
   - Key: relief
     Value: 0

@@ -22,7 +22,7 @@ namespace Project.AI.GOAP
 
 		private void GetTired()
 		{
-			Beliefs.ModifyState("exhausted", 0);
+			Beliefs.AddState("exhausted", 0);
 			InvokeGetTired();
 		}
 
@@ -33,7 +33,7 @@ namespace Project.AI.GOAP
 
 		private void NeedRelief()
 		{
-			Beliefs.ModifyState("needRelief", 0);
+			Beliefs.AddState("needRelief", 0);
 			InvokeNeedRelief();
 		}
 	}
