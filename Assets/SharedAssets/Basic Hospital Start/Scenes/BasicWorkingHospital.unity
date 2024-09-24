@@ -1188,6 +1188,7 @@ Transform:
   - {fileID: 871944020}
   - {fileID: 1500687025}
   - {fileID: 1736242236}
+  - {fileID: 2130743461}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &742992261
@@ -2595,6 +2596,9 @@ PrefabInstance:
       addedObject: {fileID: 1144783312}
     - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 1144783314}
+    - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 1144783310}
     - targetCorrespondingSourceObject: {fileID: 3300799546944532708, guid: b5a85490c717c88408f046479f4e1b8a, type: 3}
       insertIndex: -1
@@ -2686,6 +2690,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1144783314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144783308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2325438a75dd41489c0acd8ab38b65a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Go To Toilet
+  _cost: 1
+  _target: {fileID: 2130743462}
+  _targetTag: 
+  _duration: 5
+  _preConditions:
+  - Key: needToPiss
+    Value: 0
+  _afterEffects:
+  - Key: toilet
+    Value: 0
+  _agent: {fileID: 0}
+  _running: 0
 --- !u!1 &1184113935
 GameObject:
   m_ObjectHideFlags: 0
@@ -5527,6 +5556,73 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!1001 &2130743460
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 742992260}
+    m_Modifications:
+    - target: {fileID: 2995648429224225418, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_Name
+      value: Toilet
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 41.827362
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.0833334
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+--- !u!4 &2130743461 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5087096148366301041, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+  m_PrefabInstance: {fileID: 2130743460}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2130743462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2995648429224225418, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
+  m_PrefabInstance: {fileID: 2130743460}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2146182846
 GameObject:
   m_ObjectHideFlags: 0

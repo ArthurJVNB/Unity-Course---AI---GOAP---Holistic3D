@@ -10,6 +10,7 @@ namespace Project.AI.GOAP
 		private static Queue<GameObject> _patients;
 		private static Queue<GameObject> _cubicles;
 		private static Queue<GameObject> _offices;
+		private static Queue<GameObject> _toilet;
 
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 		private static void Reset()
@@ -17,6 +18,7 @@ namespace Project.AI.GOAP
 			_patients = null;
 			_cubicles = null;
 			_offices = null;
+			_toilet = null;
 
 			_instance = new();
 			_world = new();
@@ -81,6 +83,22 @@ namespace Project.AI.GOAP
 			if (_offices == null || _offices.Count == 0) return null;
 			World.ModifyState("FreeOffice", -1);
 			return _offices.Dequeue();
+		}
+		#endregion
+
+		#region Toilet
+		public static void AddToilet(GameObject toilet)
+		{
+			_toilet ??= new();
+			_toilet.Enqueue(toilet);
+			World.ModifyState("FreeToilet", 1);
+		}
+
+		public static GameObject RemoveToilet()
+		{
+			if (_toilet == null || _toilet.Count == 0) return null;
+			World.ModifyState("FreeToilet", -1);
+			return _toilet.Dequeue();
 		}
 		#endregion
 	}
