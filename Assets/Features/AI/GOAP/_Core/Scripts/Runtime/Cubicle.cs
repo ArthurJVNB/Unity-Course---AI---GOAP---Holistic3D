@@ -8,7 +8,6 @@ namespace Project.AI.GOAP
 
 		private void Awake()
 		{
-			//GWorld.AddCubicle(gameObject);
 			GWorld.AddResource(Resource, gameObject);
 		}
 	}

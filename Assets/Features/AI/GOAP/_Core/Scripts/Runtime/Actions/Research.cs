@@ -6,7 +6,6 @@ namespace Project.AI.GOAP
 	{
 		public override bool PrePerform()
 		{
-			//Target = GWorld.RemoveOffice();
 			Target = GWorld.RemoveResource(Office.Resource);
 			if (!Target) return false;
 			Inventory.AddItem(Target);
@@ -15,7 +14,6 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
-			//GWorld.AddOffice(Target);
 			GWorld.AddResource(Office.Resource, Target);
 			Inventory.RemoveItem(Target);
 			Target = null;

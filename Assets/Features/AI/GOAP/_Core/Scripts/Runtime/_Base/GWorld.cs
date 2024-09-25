@@ -5,41 +5,17 @@ namespace Project.AI.GOAP
 {
 	public sealed class GWorld
 	{
-		private static GWorld _instance;
 		private static WorldStates _world;
-		private static Queue<GameObject> _patients;
-		private static Queue<GameObject> _cubicles;
-		private static Queue<GameObject> _offices;
-		private static Queue<GameObject> _toilet;
 		private static Dictionary<Resource, ResourceQueue> _resources;
 
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
-		private static void Reset()
-		{
-			_patients = null;
-			_cubicles = null;
-			_offices = null;
-			_toilet = null;
-			_resources = new();
-
-			_instance = new();
-			_world = new();
-		}
-
-		static GWorld()
+		private static void Init()
 		{
 			_world = new();
-			_patients = new();
 			_resources = new();
 		}
 
-		private GWorld() { }
-
-		public static GWorld Instance => _instance;
-
-		public static WorldStates World => Instance.GetWorld();
-
-		public WorldStates GetWorld() => _world;
+		public static WorldStates World => _world;
 
 		public static void AddResource(Resource resource, GameObject gameObject)
 		{
@@ -53,77 +29,5 @@ namespace Project.AI.GOAP
 			if (!_resources.ContainsKey(resource)) return null;
 			return _resources[resource]?.RemoveResource();
 		}
-
-		#region Patients
-		[System.Obsolete]
-		public static void AddPatient(GameObject patient)
-		{
-			_patients ??= new();
-			_patients.Enqueue(patient);
-			World.ModifyState("Waiting", 1);
-		}
-
-		[System.Obsolete]
-		public static GameObject RemovePatient()
-		{
-			if (_patients == null || _patients.Count == 0) return null;
-			World.ModifyState("Waiting", -1);
-			return _patients.Dequeue();
-		}
-		#endregion
-
-		#region Cubicles
-		[System.Obsolete]
-		public static void AddCubicle(GameObject cubicle)
-		{
-			_cubicles ??= new();
-			_cubicles.Enqueue(cubicle);
-			World.ModifyState("FreeCubicle", 1);
-		}
-
-		[System.Obsolete]
-		public static GameObject RemoveCubicle()
-		{
-			if (_cubicles == null || _cubicles.Count == 0) return null;
-			World.ModifyState("FreeCubicle", -1);
-			return _cubicles.Dequeue();
-		}
-		#endregion
-
-		#region Offices
-		[System.Obsolete]
-		public static void AddOffice(GameObject office)
-		{
-			_offices ??= new();
-			_offices.Enqueue(office);
-			World.ModifyState("FreeOffice", 1);
-		}
-
-		[System.Obsolete]
-		public static GameObject RemoveOffice()
-		{
-			if (_offices == null || _offices.Count == 0) return null;
-			World.ModifyState("FreeOffice", -1);
-			return _offices.Dequeue();
-		}
-		#endregion
-
-		#region Toilet
-		[System.Obsolete]
-		public static void AddToilet(GameObject toilet)
-		{
-			_toilet ??= new();
-			_toilet.Enqueue(toilet);
-			World.ModifyState("FreeToilet", 1);
-		}
-
-		[System.Obsolete]
-		public static GameObject RemoveToilet()
-		{
-			if (_toilet == null || _toilet.Count == 0) return null;
-			World.ModifyState("FreeToilet", -1);
-			return _toilet.Dequeue();
-		}
-		#endregion
 	}
 }

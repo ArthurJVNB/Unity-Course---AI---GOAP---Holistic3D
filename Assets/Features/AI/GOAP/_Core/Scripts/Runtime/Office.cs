@@ -8,7 +8,6 @@ namespace Project.AI.GOAP
 
 		private void Awake()
 		{
-			//GWorld.AddOffice(gameObject);
 			GWorld.AddResource(Resource, gameObject);
 		}
 	}

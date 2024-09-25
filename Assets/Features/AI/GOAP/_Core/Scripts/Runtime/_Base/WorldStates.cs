@@ -50,10 +50,5 @@ namespace Project.AI.GOAP
 			else
 				AddState(key, value);
 		}
-
-		public Dictionary<string, int> GetStates()
-		{
-			return States;
-		}
 	}
 }

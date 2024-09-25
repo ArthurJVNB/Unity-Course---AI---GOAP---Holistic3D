@@ -6,7 +6,6 @@ namespace Project.AI.GOAP
 	{
 		public override bool PrePerform()
 		{
-			//Target = GWorld.RemoveToilet();
 			Target = GWorld.RemoveResource(Toilet.Resource);
 			if (!Target) return false;
 			Inventory.AddItem(Target);
@@ -15,7 +14,6 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
-			//GWorld.AddToilet(Target);
 			GWorld.AddResource(Toilet.Resource, Target);
 			Inventory.RemoveItem(Target);
 			Target = null;
