@@ -11,6 +11,7 @@ namespace Project.AI.GOAP
 		private static Queue<GameObject> _cubicles;
 		private static Queue<GameObject> _offices;
 		private static Queue<GameObject> _toilet;
+		private static Dictionary<Resource, ResourceQueue> _resources;
 
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 		private static void Reset()
@@ -19,6 +20,7 @@ namespace Project.AI.GOAP
 			_cubicles = null;
 			_offices = null;
 			_toilet = null;
+			_resources = new();
 
 			_instance = new();
 			_world = new();
@@ -28,6 +30,7 @@ namespace Project.AI.GOAP
 		{
 			_world = new();
 			_patients = new();
+			_resources = new();
 		}
 
 		private GWorld() { }
@@ -38,7 +41,21 @@ namespace Project.AI.GOAP
 
 		public WorldStates GetWorld() => _world;
 
+		public static void AddResource(Resource resource, GameObject gameObject)
+		{
+			if (!_resources.ContainsKey(resource))
+				_resources.Add(resource, new(resource.Tag, resource.ModifyState, World));
+			_resources[resource].AddResource(gameObject);
+		}
+
+		public static GameObject RemoveResource(Resource resource)
+		{
+			if (!_resources.ContainsKey(resource)) return null;
+			return _resources[resource]?.RemoveResource();
+		}
+
 		#region Patients
+		[System.Obsolete]
 		public static void AddPatient(GameObject patient)
 		{
 			_patients ??= new();
@@ -46,6 +63,7 @@ namespace Project.AI.GOAP
 			World.ModifyState("Waiting", 1);
 		}
 
+		[System.Obsolete]
 		public static GameObject RemovePatient()
 		{
 			if (_patients == null || _patients.Count == 0) return null;
@@ -55,6 +73,7 @@ namespace Project.AI.GOAP
 		#endregion
 
 		#region Cubicles
+		[System.Obsolete]
 		public static void AddCubicle(GameObject cubicle)
 		{
 			_cubicles ??= new();
@@ -62,6 +81,7 @@ namespace Project.AI.GOAP
 			World.ModifyState("FreeCubicle", 1);
 		}
 
+		[System.Obsolete]
 		public static GameObject RemoveCubicle()
 		{
 			if (_cubicles == null || _cubicles.Count == 0) return null;
@@ -71,6 +91,7 @@ namespace Project.AI.GOAP
 		#endregion
 
 		#region Offices
+		[System.Obsolete]
 		public static void AddOffice(GameObject office)
 		{
 			_offices ??= new();
@@ -78,6 +99,7 @@ namespace Project.AI.GOAP
 			World.ModifyState("FreeOffice", 1);
 		}
 
+		[System.Obsolete]
 		public static GameObject RemoveOffice()
 		{
 			if (_offices == null || _offices.Count == 0) return null;
@@ -87,6 +109,7 @@ namespace Project.AI.GOAP
 		#endregion
 
 		#region Toilet
+		[System.Obsolete]
 		public static void AddToilet(GameObject toilet)
 		{
 			_toilet ??= new();
@@ -94,6 +117,7 @@ namespace Project.AI.GOAP
 			World.ModifyState("FreeToilet", 1);
 		}
 
+		[System.Obsolete]
 		public static GameObject RemoveToilet()
 		{
 			if (_toilet == null || _toilet.Count == 0) return null;
