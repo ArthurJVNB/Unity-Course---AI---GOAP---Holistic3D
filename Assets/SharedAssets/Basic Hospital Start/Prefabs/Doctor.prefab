@@ -636,6 +636,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5107485099718359295}
   - component: {fileID: 7114213164413011483}
+  - component: {fileID: 8597736028683547588}
+  - component: {fileID: 1142277014981284639}
+  - component: {fileID: 6663972576633846552}
+  - component: {fileID: 1245193707366333768}
+  - component: {fileID: 6421882537636741284}
   m_Layer: 0
   m_Name: Doctor
   m_TagString: Untagged
@@ -671,7 +676,7 @@ NavMeshAgent:
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
-  avoidancePriority: 50
+  avoidancePriority: 15
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
@@ -681,6 +686,109 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8597736028683547588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300799546944532708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989917604ad53264fbdbd5202e31477d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Rest
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Lounge
+  _duration: 5
+  _preConditions:
+  - Key: exhausted
+    Value: 0
+  _afterEffects:
+  - Key: rested
+    Value: 0
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &1142277014981284639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300799546944532708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ee971cf2edadb4bbb81c4018c4fbdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Research
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Office
+  _duration: 5
+  _preConditions:
+  - Key: FreeOffice
+    Value: 0
+  _afterEffects:
+  - Key: research
+    Value: 0
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &6663972576633846552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300799546944532708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2325438a75dd41489c0acd8ab38b65a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Go To Toilet
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Toilet
+  _duration: 5
+  _preConditions:
+  - Key: FreeToilet
+    Value: 0
+  - Key: needRelief
+    Value: 0
+  _afterEffects:
+  - Key: relief
+    Value: 0
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &1245193707366333768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300799546944532708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 090f29770954426428c8fdd1a6199a8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actions: []
+  _currentAction: {fileID: 0}
+--- !u!114 &6421882537636741284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300799546944532708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3578275715817459665
 GameObject:
   m_ObjectHideFlags: 0

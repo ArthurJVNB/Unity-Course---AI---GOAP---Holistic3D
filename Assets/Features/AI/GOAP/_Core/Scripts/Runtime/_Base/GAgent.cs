@@ -26,6 +26,17 @@ namespace Project.AI.GOAP
 		public GInventory Inventory => _inventory;
 		public WorldStates Beliefs => _beliefs;
 
+		private bool ReachedTarget
+		{
+			get
+			{
+				const float MIN_REACHED_DISTANCE = 2f;
+				if (_currentAction.Agent.hasPath && _currentAction.Agent.remainingDistance < MIN_REACHED_DISTANCE)
+					return true;
+				return Vector3.Distance(_currentAction.Agent.transform.position, _currentAction.Target.transform.position) < MIN_REACHED_DISTANCE;
+			}
+		}
+
 		protected virtual void Start()
 		{
 			Init();
@@ -37,8 +48,7 @@ namespace Project.AI.GOAP
 			if (_currentAction != null && _currentAction.Running)
 			{
 				// If agent has a path and reached the goal
-				const float MIN_REACHED_DISTANCE = 2f;
-				if (_currentAction.Agent.hasPath && _currentAction.Agent.remainingDistance < MIN_REACHED_DISTANCE)
+				if (ReachedTarget)
 				{
 					if (!_invoked)
 					{

@@ -2902,17 +2902,19 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7880970886039044016}
+  - component: {fileID: 1983183637533878150}
   - component: {fileID: 1635687416280438780}
   - component: {fileID: 1727735387797012349}
   - component: {fileID: 4605027809429156585}
   - component: {fileID: 31121701039333959}
   - component: {fileID: 7120814948123480931}
   - component: {fileID: 920784610822451631}
+  - component: {fileID: 6025125710414160735}
   - component: {fileID: 2339887517937097894}
   - component: {fileID: 2205306671477984152}
   m_Layer: 0
   m_Name: Patient
-  m_TagString: Untagged
+  m_TagString: Patient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2933,6 +2935,29 @@ Transform:
   - {fileID: 5200691168151869274}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1983183637533878150
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881807149238628900}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &1635687416280438780
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2971,7 +2996,7 @@ MonoBehaviour:
   _cost: 1
   _target: {fileID: 0}
   _targetTag: Door
-  _duration: 1
+  _duration: 0
   _preConditions: []
   _afterEffects:
   - Key: hasArrived
@@ -3076,6 +3101,35 @@ MonoBehaviour:
   _afterEffects:
   - Key: isHome
     Value: 1
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &6025125710414160735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881807149238628900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2325438a75dd41489c0acd8ab38b65a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Go To Toilet
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: Toilet
+  _duration: 5
+  _preConditions:
+  - Key: FreeToilet
+    Value: 0
+  - Key: needRelief
+    Value: 0
+  - Key: atHospital
+    Value: 0
+  _afterEffects:
+  - Key: relief
+    Value: 0
   _agent: {fileID: 0}
   _running: 0
 --- !u!114 &2339887517937097894

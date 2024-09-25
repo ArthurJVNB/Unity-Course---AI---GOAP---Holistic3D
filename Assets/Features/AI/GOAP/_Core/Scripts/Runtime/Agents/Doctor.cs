@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace Project.AI.GOAP
 {
-	public class Nurse : GAgent
+	public class Doctor : GAgent
 	{
 		protected override void Start()
 		{
 			base.Start();
-			_goals.Add(new SubGoal("treatPatient", 1, false), 3);
-			_goals.Add(new SubGoal("rested", 1, false), 1);
-			_goals.Add(new SubGoal("relief", 1, false), 1);
+			_goals.Add(new SubGoal("research", 1, false), 1);
+			_goals.Add(new SubGoal("rested", 1, false), 3);
+			_goals.Add(new SubGoal("relief", 1, false), 3);
 
 			InvokeGetTired();
 			InvokeNeedRelief();
@@ -17,7 +17,7 @@ namespace Project.AI.GOAP
 
 		private void InvokeGetTired()
 		{
-			Invoke(nameof(GetTired), Random.Range(10, 20));
+			Invoke(nameof(GetTired), Random.Range(50, 60));
 		}
 
 		private void GetTired()
@@ -28,7 +28,7 @@ namespace Project.AI.GOAP
 
 		private void InvokeNeedRelief()
 		{
-			Invoke(nameof(NeedRelief), Random.Range(20, 30));
+			Invoke(nameof(NeedRelief), Random.Range(60, 120));
 		}
 
 		private void NeedRelief()

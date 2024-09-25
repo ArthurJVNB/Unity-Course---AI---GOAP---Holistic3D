@@ -10,6 +10,9 @@ TagManager:
   - Door
   - Cubicle
   - Reception
+  - Office
+  - Toilet
+  - Patient
   layers:
   - Default
   - TransparentFX
