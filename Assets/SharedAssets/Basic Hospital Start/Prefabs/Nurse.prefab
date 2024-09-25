@@ -1149,7 +1149,7 @@ MonoBehaviour:
   _targetTag: 
   _duration: 1
   _preConditions:
-  - Key: Waiting
+  - Key: PatientWaiting
     Value: 1
   - Key: FreeCubicle
     Value: 1

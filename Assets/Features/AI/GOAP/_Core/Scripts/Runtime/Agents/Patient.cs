@@ -4,7 +4,7 @@ namespace Project.AI.GOAP
 {
     public class Patient : GAgent
     {
-		public static readonly Resource Resource = new("Patient", "Waiting");
+		public static readonly Resource Resource = new("Patient", "PatientWaiting");
 
 		protected override void Start()
 		{
