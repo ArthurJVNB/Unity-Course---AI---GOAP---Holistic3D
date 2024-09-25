@@ -12,6 +12,7 @@ TagManager:
   - Reception
   - Office
   - Toilet
+  - Patient
   layers:
   - Default
   - TransparentFX

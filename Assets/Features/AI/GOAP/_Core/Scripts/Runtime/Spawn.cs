@@ -9,6 +9,7 @@ namespace Project.AI.GOAP
 		[SerializeField] private int _numPatients = 1;
 		[Min(0)]
 		[SerializeField] private float _timeBetweenWaves = 2;
+		[SerializeField] private bool _spawnWaves = false;
 
 		private void Start()
 		{
@@ -19,7 +20,8 @@ namespace Project.AI.GOAP
 		{
 			for (int i = 0; i < _numPatients; i++)
 				SpawnPatient();
-			Invoke(nameof(SpawnWave), _timeBetweenWaves);
+			if (_spawnWaves)
+				Invoke(nameof(SpawnWave), _timeBetweenWaves);
 		}
 
 		private void SpawnPatient()
