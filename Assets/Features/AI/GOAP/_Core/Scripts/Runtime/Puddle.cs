@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace Project.AI.GOAP
 {
-    public class Office : MonoBehaviour
+    public class Puddle : MonoBehaviour
     {
-		public static readonly Resource Resource = new("Office", "FreeOffice");
+        public static readonly Resource Resource = new("Puddle", "Puddle");
 
 		private void Awake()
 		{

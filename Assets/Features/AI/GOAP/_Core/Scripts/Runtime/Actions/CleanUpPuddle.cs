@@ -1,12 +1,10 @@
-using UnityEngine;
-
 namespace Project.AI.GOAP
 {
-	public class Research : GAction
+	public class CleanUpPuddle : GAction
 	{
 		public override bool PrePerform()
 		{
-			Target = GWorld.RemoveResource(Office.Resource);
+			Target = GWorld.RemoveResource(Puddle.Resource);
 			if (!Target) return false;
 			Inventory.AddItem(Target);
 			return true;
@@ -14,8 +12,8 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
-			GWorld.AddResource(Office.Resource, Target);
 			Inventory.RemoveItem(Target);
+			Destroy(Target);
 			Target = null;
 			return true;
 		}

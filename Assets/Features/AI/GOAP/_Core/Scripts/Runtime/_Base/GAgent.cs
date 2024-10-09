@@ -42,7 +42,7 @@ namespace Project.AI.GOAP
 			Init();
 		}
 
-		protected virtual void LateUpdate()
+		protected virtual void FixedUpdate()
 		{
 			// If agent does have a plan
 			if (_currentAction != null && _currentAction.Running)
@@ -105,6 +105,11 @@ namespace Project.AI.GOAP
 					}
 				}
 			}
+		}
+
+		public void RemoveState(string state)
+		{
+			_beliefs.RemoveState(state);
 		}
 
 		private void Init()

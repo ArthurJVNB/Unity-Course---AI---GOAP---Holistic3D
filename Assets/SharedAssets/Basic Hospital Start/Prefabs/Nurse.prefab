@@ -1080,12 +1080,13 @@ GameObject:
   m_Component:
   - component: {fileID: 177407082141715887}
   - component: {fileID: 4847754130438738623}
+  - component: {fileID: 5473820789244002802}
   - component: {fileID: 5910310483961742918}
   - component: {fileID: 6650823500022758944}
   - component: {fileID: 5052672971367005142}
   - component: {fileID: 7334125174150204525}
-  - component: {fileID: 5473820789244002802}
   - component: {fileID: 6869226553612492709}
+  - component: {fileID: 5429012531238325560}
   m_Layer: 0
   m_Name: Nurse
   m_TagString: Untagged
@@ -1131,6 +1132,20 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &5473820789244002802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfbde2b154d22e4f8da9968803b7d9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actions: []
+  _currentAction: {fileID: 0}
 --- !u!114 &5910310483961742918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1149,7 +1164,7 @@ MonoBehaviour:
   _targetTag: 
   _duration: 1
   _preConditions:
-  - Key: Waiting
+  - Key: PatientWaiting
     Value: 1
   - Key: FreeCubicle
     Value: 1
@@ -1235,20 +1250,6 @@ MonoBehaviour:
     Value: 0
   _agent: {fileID: 0}
   _running: 0
---- !u!114 &5473820789244002802
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2618188073631541129}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edfbde2b154d22e4f8da9968803b7d9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _actions: []
-  _currentAction: {fileID: 0}
 --- !u!114 &6869226553612492709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1261,6 +1262,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5429012531238325560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2618188073631541129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea624527cf7253149adfdaa616aaba34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stateToLookFor: needRelief
+  _stateStrength: 10
+  _stateDecayRate: 2
+  _resourcePrefab: {fileID: 1625109968861542130, guid: 2f67e1b06640349c7a33a29963d525ff, type: 3}
+  _instantiationOffset: {x: 0, y: 0, z: 0}
+  _actionThatSatisfies: {fileID: 7334125174150204525}
 --- !u!1 &2629889911763255196
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,14 +8,14 @@ namespace Project.AI.GOAP
 
 		public override bool PrePerform()
 		{
-			Target = GWorld.RemovePatient();
+			Target = GWorld.RemoveResource(Patient.Resource);
 			if (!Target) return false;
 
-			_resource = GWorld.RemoveCubicle();
+			_resource = GWorld.RemoveResource(Cubicle.Resource);
 			if (!_resource)
 			{
 				// Give back the patient
-				GWorld.AddPatient(Target);
+				GWorld.AddResource(Patient.Resource, Target);
 				Target = null;
 				return false;
 			}

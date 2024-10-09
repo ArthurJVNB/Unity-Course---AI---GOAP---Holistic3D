@@ -16,7 +16,7 @@ namespace Project.AI.GOAP
 			}
 
 			List<Node> leaves = new();
-			Node start = new(null, 0, GWorld.Instance.GetWorld().GetStates(), beliefStates.GetStates(), null);
+			Node start = new(null, 0, GWorld.World.States, beliefStates.States, null);
 
 			bool success = BuildGraph(start, leaves, usableActions, goal);
 

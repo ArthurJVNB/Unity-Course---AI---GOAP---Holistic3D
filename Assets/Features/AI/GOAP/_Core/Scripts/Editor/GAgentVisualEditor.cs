@@ -88,7 +88,7 @@ namespace Project.AI.GOAP
 			}
 
 			GUILayout.Label("Beliefs: ");
-			foreach (KeyValuePair<string, int> sg in agent.gameObject.GetComponent<GAgent>().Beliefs.GetStates())
+			foreach (KeyValuePair<string, int> sg in agent.gameObject.GetComponent<GAgent>().Beliefs.States)
 			{
 				GUILayout.Label("=====  " + sg.Key);
 			}
