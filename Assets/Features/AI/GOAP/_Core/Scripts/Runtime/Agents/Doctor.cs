@@ -17,7 +17,9 @@ namespace Project.AI.GOAP
 
 		private void InvokeGetTired()
 		{
-			Invoke(nameof(GetTired), Random.Range(50, 60));
+			const int Min = 50;
+			const int Max = 60;
+			Invoke(nameof(GetTired), Random.Range(Min, Max));
 		}
 
 		private void GetTired()
@@ -28,7 +30,9 @@ namespace Project.AI.GOAP
 
 		private void InvokeNeedRelief()
 		{
-			Invoke(nameof(NeedRelief), Random.Range(60, 120));
+			const int Min = 60;
+			const int Max = 120;
+			Invoke(nameof(NeedRelief), Random.Range(Min, Max));
 		}
 
 		private void NeedRelief()

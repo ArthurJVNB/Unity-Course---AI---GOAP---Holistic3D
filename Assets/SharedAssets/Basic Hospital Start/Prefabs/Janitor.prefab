@@ -3131,6 +3131,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8598099270858982164}
   - component: {fileID: 4146205043827389378}
+  - component: {fileID: 1305475297805121259}
+  - component: {fileID: 4858794028372324732}
+  - component: {fileID: 8997392224761927184}
   m_Layer: 0
   m_Name: Janitor
   m_TagString: Untagged
@@ -3176,6 +3179,57 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1305475297805121259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605689669571939968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e18d35789836114e9ace93250e16cf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actions: []
+  _currentAction: {fileID: 0}
+--- !u!114 &4858794028372324732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605689669571939968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcba30d4e908f254f9c6b21cfc1cc516, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _actionName: Clear Puddle
+  _cost: 1
+  _target: {fileID: 0}
+  _targetTag: 
+  _duration: 2
+  _preConditions:
+  - Key: Puddle
+    Value: 1
+  _afterEffects:
+  - Key: clean
+    Value: 1
+  _agent: {fileID: 0}
+  _running: 0
+--- !u!114 &8997392224761927184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8605689669571939968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3496b0629981884b9b409bd80421e3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8659355627948070805
 GameObject:
   m_ObjectHideFlags: 0
