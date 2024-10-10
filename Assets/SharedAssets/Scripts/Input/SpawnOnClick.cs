@@ -30,16 +30,26 @@ namespace Project
 		#region Input: New Input System
 #if ENABLE_INPUT_SYSTEM
 		private InputAction _clickAction;
+		private InputAction _previousAction;
+		private InputAction _nextAction;
 
 		private void OnEnable()
 		{
 			_clickAction = InputSystem.actions.FindAction("Click");
 			_clickAction.performed += ClickAction_performed;
+
+			_previousAction = InputSystem.actions.FindAction("Previous");
+			_previousAction.performed += PreviousAction_performed;
+
+			_nextAction = InputSystem.actions.FindAction("Next");
+			_nextAction.performed += NextAction_performed;
 		}
 
 		private void OnDisable()
 		{
 			if (_clickAction != null) _clickAction.performed -= ClickAction_performed;
+			if (_previousAction != null) _previousAction.performed -= PreviousAction_performed;
+			if (_nextAction != null) _nextAction.performed -= NextAction_performed;
 		}
 
 		private void Update()
@@ -63,6 +73,18 @@ namespace Project
 				Debug.DrawLine(Camera.main.transform.position, _instantiatedObject.transform.position, Color.green, 10);
 				Notify_OnEndPositiong();
 			}
+		}
+
+		private void PreviousAction_performed(InputAction.CallbackContext context)
+		{
+			if (!context.action.WasPressedThisFrame()) return;
+			RotateObject(false);
+		}
+
+		private void NextAction_performed(InputAction.CallbackContext context)
+		{
+			if (!context.action.WasPressedThisFrame()) return;
+			RotateObject(true);
 		}
 
 		private static Ray GetPointerRay()
@@ -167,6 +189,12 @@ namespace Project
 				Debug.DrawLine(Camera.main.transform.position, hit.point, Color.blue, 1);
 				_instantiatedObject.transform.position = newPosition;
 			}
+		}
+
+		private void RotateObject(bool clockwise)
+		{
+			if (!_instantiatedObject) return;
+			_instantiatedObject.transform.Rotate(new Vector3(0, clockwise ? 90 : -90, 0));
 		}
 		#endregion
 
