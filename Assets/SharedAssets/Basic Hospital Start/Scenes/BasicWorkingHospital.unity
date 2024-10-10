@@ -5350,7 +5350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323e1ffe506b44c41b7057ab486e79e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabToSpawn: {fileID: 1034050901}
+  _prefabToSpawn: {fileID: 2995648429224225418, guid: ec7f4b84d11e74c6495959b262c08592, type: 3}
   _parent: {fileID: 742992260}
   _onSpawned:
     m_PersistentCalls:
