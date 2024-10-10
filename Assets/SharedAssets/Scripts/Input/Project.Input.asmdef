@@ -2,7 +2,8 @@
     "name": "Project.Input",
     "rootNamespace": "Project",
     "references": [
-        "GUID:75469ad4d38634e559750d17036d5f7c"
+        "GUID:75469ad4d38634e559750d17036d5f7c",
+        "GUID:d3c517d019d8c0b439e7492c6589d610"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5087096148366301041}
   - component: {fileID: 566852920380339888}
+  - component: {fileID: 2556285156840815316}
   m_Layer: 0
   m_Name: Toilet
   m_TagString: Toilet
@@ -43,6 +44,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0df011797a95cb043998865da2ffb058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2556285156840815316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2995648429224225418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac4e68383cfb58841980c5414431e778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7623154529588302997
