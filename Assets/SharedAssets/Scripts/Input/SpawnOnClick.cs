@@ -26,7 +26,8 @@ namespace Project
 		private GameObject _instantiatedObject;
 		private Dictionary<GameObject, LayerMask> _cachedLayerMasks;
 
-		#region New Input System
+		#region Input
+		#region Input: New Input System
 #if ENABLE_INPUT_SYSTEM
 		private InputAction _clickAction;
 
@@ -51,20 +52,7 @@ namespace Project
 		{
 			if (context.action.WasPressedThisFrame())
 			{
-				Ray ray = GetPointerRay();
-				//Debug.DrawRay(Camera.main.transform.position, ray.direction * 1000, Color.red, 10);
-
-				if (Physics.Raycast(ray, out RaycastHit hit))
-				{
-					Vector3 spawnPosition = hit.point;
-					Debug.Log($"spawn at position {spawnPosition} (hit object {hit.transform.name})");
-					Debug.DrawLine(Camera.main.transform.position, hit.point, Color.red, 10);
-					_instantiatedObject = Instantiate(_prefabToSpawn, spawnPosition, _prefabToSpawn.transform.rotation, _parent);
-					Collider[] colliders = _instantiatedObject.GetComponentsInChildren<Collider>();
-					CacheLayerMasks(colliders);
-					ApplyIgnoreLayerMask(colliders);
-					Notify_OnSpawned();
-				}
+				InstantiateObject(GetPointerRay());
 				return;
 			}
 
@@ -117,20 +105,21 @@ namespace Project
 			return ray;
 		}
 
-
 #endif
 		#endregion
 
-		#region Legacy Input System (not implemented)
+		#region Input: Legacy Input System (not implemented)
 #if ENABLE_LEGACY_INPUT_MANAGER && !ENABLE_INPUT_SYSTEM
 		
 #endif
 		#endregion
+		#endregion
 
+		#region Layer Masks
 		private void CacheLayerMasks(Collider[] colliders)
 		{
 			if (colliders == null) return;
-			
+
 			_cachedLayerMasks ??= new();
 			_cachedLayerMasks.Clear();
 
@@ -148,8 +137,25 @@ namespace Project
 		private void ApplyIgnoreLayerMask(Collider[] colliders)
 		{
 			if (colliders == null) return;
-			foreach(var collider in colliders)
+			foreach (var collider in colliders)
 				collider.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+		}
+		#endregion
+
+		#region Instantiated Object
+		private void InstantiateObject(Ray ray)
+		{
+			if (Physics.Raycast(ray, out RaycastHit hit))
+			{
+				Vector3 spawnPosition = hit.point;
+				Debug.Log($"spawn at position {spawnPosition} (hit object {hit.transform.name})");
+				Debug.DrawLine(Camera.main.transform.position, hit.point, Color.red, 10);
+				_instantiatedObject = Instantiate(_prefabToSpawn, spawnPosition, _prefabToSpawn.transform.rotation, _parent);
+				Collider[] colliders = _instantiatedObject.GetComponentsInChildren<Collider>();
+				CacheLayerMasks(colliders);
+				ApplyIgnoreLayerMask(colliders);
+				Notify_OnSpawned();
+			}
 		}
 
 		private void MoveInstantiatedObject(Ray ray)
@@ -162,7 +168,9 @@ namespace Project
 				_instantiatedObject.transform.position = newPosition;
 			}
 		}
+		#endregion
 
+		#region Notifiers
 		private void Notify_OnSpawned()
 		{
 			_onSpawned?.Invoke(_instantiatedObject);
@@ -174,5 +182,6 @@ namespace Project
 			_onEndPositioning?.Invoke(_instantiatedObject);
 			OnEndPositioning?.Invoke(_instantiatedObject);
 		}
+		#endregion
 	}
 }
