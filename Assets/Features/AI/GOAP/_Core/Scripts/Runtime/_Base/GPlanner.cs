@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace Project.AI.GOAP
 {
 	public class GPlanner
 	{
+		private const bool ENABLE_DEBUG = false;
+
 		public Queue<GAction> Plan(List<GAction> actions, Dictionary<string, int> goal, WorldStates beliefStates)
 		{
 			List<GAction> usableActions = new();
@@ -49,9 +50,16 @@ namespace Project.AI.GOAP
 			foreach (GAction action in result)
 				queue.Enqueue(action);
 
-			Debug.Log("The Plan is: ");
-			foreach (GAction action in queue)
-				Debug.Log("Q: " + action.ActionName);
+#if UNITY_EDITOR
+#pragma warning disable CS0162 // Unreachable code detected
+			if (ENABLE_DEBUG)
+			{
+				Debug.Log("The Plan is: ");
+				foreach (GAction action in queue)
+					Debug.Log("Q: " + action.ActionName);
+			}
+#pragma warning restore CS0162 // Unreachable code detected
+#endif
 
 			return queue;
 		}
