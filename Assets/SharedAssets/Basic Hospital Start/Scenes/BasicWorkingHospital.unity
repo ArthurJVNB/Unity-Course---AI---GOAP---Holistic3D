@@ -344,9 +344,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &306721104
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -570,6 +570,53 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 469685279}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &644666485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 644666487}
+  - component: {fileID: 644666488}
+  m_Layer: 0
+  m_Name: NavMeshSurfaceUpdater
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &644666487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644666485}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &644666488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 644666485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e00159625166741b2b2111a2b6619a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _surfaces:
+  - {fileID: 742992261}
+  _onEnable: 1
 --- !u!1 &658721723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1209,7 +1256,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -2037,6 +2084,7 @@ GameObject:
   - component: {fileID: 1034050905}
   - component: {fileID: 1034050904}
   - component: {fileID: 1034050903}
+  - component: {fileID: 1034050906}
   m_Layer: 0
   m_Name: Plant (2)
   m_TagString: Untagged
@@ -2080,9 +2128,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &1034050904
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2136,6 +2184,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1034050901}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1034050906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034050901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedVersion: 0
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1042095031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,9 +3022,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &1300565949
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3855,9 +3923,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &1508163974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4570,9 +4638,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &1583865046
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4774,9 +4842,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &1646061457
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5283,6 +5351,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabToSpawn: {fileID: 1034050901}
+  _parent: {fileID: 742992260}
+  _onSpawned:
+    m_PersistentCalls:
+      m_Calls: []
+  _onEndPositioning:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 644666488}
+        m_TargetAssemblyTypeName: Project.AI.NavMeshSurfaceUpdater, Project.AI
+        m_MethodName: UpdateSurfaces
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1953913234
 Transform:
   m_ObjectHideFlags: 0
@@ -5353,9 +5440,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &1999376862
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5464,9 +5551,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5000001
-  m_Height: 2
+  m_Height: 6.52
   m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  m_Center: {x: 0.000000059604645, y: 2.16, z: -0.00000008940697}
 --- !u!23 &2071005935
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5869,3 +5956,4 @@ SceneRoots:
   - {fileID: 1104772353}
   - {fileID: 1260501732}
   - {fileID: 1953913234}
+  - {fileID: 644666487}
