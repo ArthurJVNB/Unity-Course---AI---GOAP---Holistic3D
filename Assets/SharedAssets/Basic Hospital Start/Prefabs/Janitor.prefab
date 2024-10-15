@@ -3218,6 +3218,7 @@ MonoBehaviour:
     Value: 1
   _agent: {fileID: 0}
   _running: 0
+  _resourcePuddle: {fileID: 11400000, guid: b0fb68583a909e6438c86e9956642bd6, type: 2}
 --- !u!114 &8997392224761927184
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -750,6 +750,7 @@ MonoBehaviour:
     Value: 0
   _agent: {fileID: 0}
   _running: 0
+  _resourceOffice: {fileID: 11400000, guid: 95c873ac6d3f5ca4292e74b86a3964f4, type: 2}
 --- !u!114 &6663972576633846552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,6 +778,7 @@ MonoBehaviour:
     Value: 0
   _agent: {fileID: 0}
   _running: 0
+  _resourceToilet: {fileID: 11400000, guid: fa232971f983be44aa4956b80a08eead, type: 2}
 --- !u!114 &6421882537636741284
 MonoBehaviour:
   m_ObjectHideFlags: 0

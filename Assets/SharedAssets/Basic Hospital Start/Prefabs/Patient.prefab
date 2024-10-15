@@ -3147,6 +3147,7 @@ MonoBehaviour:
     Value: 0
   _agent: {fileID: 0}
   _running: 0
+  _resourceToilet: {fileID: 11400000, guid: fa232971f983be44aa4956b80a08eead, type: 2}
 --- !u!114 &2205306671477984152
 MonoBehaviour:
   m_ObjectHideFlags: 0
