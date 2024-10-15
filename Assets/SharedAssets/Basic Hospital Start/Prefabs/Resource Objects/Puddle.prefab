@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6741276832532397783}
   - component: {fileID: 1058727325851583022}
   - component: {fileID: 4391061174831903134}
-  - component: {fileID: -8909812329512890692}
+  - component: {fileID: -3996134164328332619}
   m_Layer: 0
   m_Name: Puddle
   m_TagString: Puddle
@@ -104,7 +104,7 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
---- !u!114 &-8909812329512890692
+--- !u!114 &-3996134164328332619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1625109968861542130}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1336bc53ad923c40a02a999c180570b, type: 3}
+  m_Script: {fileID: 11500000, guid: 05a4b2d4fdbc65840939b7dc13656105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resource: {fileID: 11400000, guid: b0fb68583a909e6438c86e9956642bd6, type: 2}

@@ -35,5 +35,22 @@ namespace Project.AI.GOAP
 			if (!_resources.ContainsKey(resource)) return false;
 			return _resources[resource]?.RemoveResource(gameObject);
 		}
+
+		// New: using scriptable object ResourceData
+
+		public static void AddResource(ResourceData resource, GameObject gameObject)
+		{
+			AddResource(new Resource(resource.Tag, resource.ModifyState), gameObject);
+		}
+
+		public static GameObject RemoveResource(ResourceData resource)
+		{
+			return RemoveResource(new Resource(resource.Tag, resource.ModifyState));
+		}
+
+		public static bool RemoveResource(ResourceData resource, GameObject gameObject)
+		{
+			return RemoveResource(new Resource(resource.Tag, resource.ModifyState), gameObject);
+		}
 	}
 }

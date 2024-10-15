@@ -1173,6 +1173,8 @@ MonoBehaviour:
     Value: 1
   _agent: {fileID: 0}
   _running: 0
+  _resourcePatient: {fileID: 11400000, guid: e21dfddd190f0e343b7131c5af35d623, type: 2}
+  _resourceCubicle: {fileID: 11400000, guid: 1ed92be339844fe4d86dd5a35d3ece6c, type: 2}
 --- !u!114 &6650823500022758944
 MonoBehaviour:
   m_ObjectHideFlags: 0

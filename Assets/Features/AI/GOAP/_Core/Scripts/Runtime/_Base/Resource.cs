@@ -1,5 +1,6 @@
 namespace Project.AI.GOAP
 {
+	[System.Obsolete("Marked to be deprecated. Use ResourceData instead.")]
 	public struct Resource
 	{
 		public string Tag;

@@ -1334,7 +1334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7884536996883799602}
   - component: {fileID: 6160811452686381494}
-  - component: {fileID: 1647826835277993353}
+  - component: {fileID: 5891827213863176090}
   m_Layer: 0
   m_Name: Cubicle
   m_TagString: Cubicle
@@ -1380,7 +1380,7 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
---- !u!114 &1647826835277993353
+--- !u!114 &5891827213863176090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1389,9 +1389,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5874423910086712904}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33db4eb18b7fdb8429be96b04fee738a, type: 3}
+  m_Script: {fileID: 11500000, guid: 05a4b2d4fdbc65840939b7dc13656105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resource: {fileID: 11400000, guid: 1ed92be339844fe4d86dd5a35d3ece6c, type: 2}
 --- !u!1 &6558310076933162121
 GameObject:
   m_ObjectHideFlags: 0

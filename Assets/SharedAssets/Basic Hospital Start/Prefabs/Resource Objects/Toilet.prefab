@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5087096148366301041}
-  - component: {fileID: 566852920380339888}
+  - component: {fileID: -8801739306234150412}
   - component: {fileID: 2556285156840815316}
   m_Layer: 0
   m_Name: Toilet
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 9150177353293230038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &566852920380339888
+--- !u!114 &-8801739306234150412
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -43,9 +43,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2995648429224225418}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0df011797a95cb043998865da2ffb058, type: 3}
+  m_Script: {fileID: 11500000, guid: 05a4b2d4fdbc65840939b7dc13656105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _resource: {fileID: 11400000, guid: fa232971f983be44aa4956b80a08eead, type: 2}
 --- !u!114 &2556285156840815316
 MonoBehaviour:
   m_ObjectHideFlags: 0
