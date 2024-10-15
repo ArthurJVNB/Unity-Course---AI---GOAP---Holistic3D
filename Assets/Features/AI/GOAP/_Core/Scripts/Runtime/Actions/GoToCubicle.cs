@@ -11,7 +11,6 @@ namespace Project.AI.GOAP
 
 		public override bool PrePerform()
 		{
-			//Target = Inventory.FindItemWithTag("Cubicle");
 			Target = Inventory.FindItemWithTag(_resourceCubicle.Tag);
 			if (!Target) return false;
 
@@ -21,8 +20,6 @@ namespace Project.AI.GOAP
 
 		public override bool PostPerform()
 		{
-			//GWorld.World.ModifyState("TreatingPatient", 1);
-			//GWorld.AddResource(Cubicle.Resource, Target);
 			GWorld.World.ModifyState(StateTreatingPatient, -1);
 			GWorld.AddResource(_resourceCubicle, Target);
 			Inventory.RemoveItem(Target);

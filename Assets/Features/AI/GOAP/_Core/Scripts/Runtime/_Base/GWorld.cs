@@ -6,7 +6,7 @@ namespace Project.AI.GOAP
 	public sealed class GWorld
 	{
 		private static WorldStates _world;
-		private static Dictionary<Resource, ResourceQueue> _resources;
+		private static Dictionary<ResourceData, ResourceQueue> _resources;
 
 		[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
 		private static void Init()
@@ -17,40 +17,23 @@ namespace Project.AI.GOAP
 
 		public static WorldStates World => _world;
 
-		public static void AddResource(Resource resource, GameObject gameObject)
+		public static void AddResource(ResourceData resource, GameObject gameObject)
 		{
 			if (!_resources.ContainsKey(resource))
 				_resources.Add(resource, new(resource.Tag, resource.ModifyState, World));
 			_resources[resource].AddResource(gameObject);
 		}
 
-		public static GameObject RemoveResource(Resource resource)
+		public static GameObject RemoveResource(ResourceData resource)
 		{
 			if (!_resources.ContainsKey(resource)) return null;
 			return _resources[resource]?.RemoveResource();
 		}
 
-		public static bool RemoveResource(Resource resource, GameObject gameObject)
+		public static bool RemoveResource(ResourceData resource, GameObject gameObject)
 		{
 			if (!_resources.ContainsKey(resource)) return false;
 			return _resources[resource]?.RemoveResource(gameObject);
-		}
-
-		// New: using scriptable object ResourceData
-
-		public static void AddResource(ResourceData resource, GameObject gameObject)
-		{
-			AddResource(new Resource(resource.Tag, resource.ModifyState), gameObject);
-		}
-
-		public static GameObject RemoveResource(ResourceData resource)
-		{
-			return RemoveResource(new Resource(resource.Tag, resource.ModifyState));
-		}
-
-		public static bool RemoveResource(ResourceData resource, GameObject gameObject)
-		{
-			return RemoveResource(new Resource(resource.Tag, resource.ModifyState), gameObject);
 		}
 	}
 }

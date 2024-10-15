@@ -1283,6 +1283,7 @@ MonoBehaviour:
   _stateDecayRate: 2
   _resourcePrefab: {fileID: 1625109968861542130, guid: 2f67e1b06640349c7a33a29963d525ff, type: 3}
   _instantiationOffset: {x: 0, y: 0, z: 0}
+  _resource: {fileID: 0}
   _actionThatSatisfies: {fileID: 7334125174150204525}
 --- !u!1 &2629889911763255196
 GameObject:
