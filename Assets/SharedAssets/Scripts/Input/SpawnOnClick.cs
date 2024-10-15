@@ -26,6 +26,17 @@ namespace Project
 		private GameObject _currentObject;
 		private Vector3 _pointerOffset;
 		private Dictionary<GameObject, LayerMask> _cachedLayerMasks;
+		private bool _shouldDeleteObject;
+
+		public void PointerEnterTrash()
+		{
+			_shouldDeleteObject = true;
+		}
+
+		public void PointerExitTrash()
+		{
+			_shouldDeleteObject = false;
+		}
 
 		#region Input
 		#region Input: New Input System
@@ -33,6 +44,7 @@ namespace Project
 		private InputAction _clickAction;
 		private InputAction _previousAction;
 		private InputAction _nextAction;
+		private InputAction _deleteAction;
 
 		private void OnEnable()
 		{
@@ -44,6 +56,9 @@ namespace Project
 
 			_nextAction = InputSystem.actions.FindAction("Next");
 			_nextAction.performed += NextAction_performed;
+
+			_deleteAction = InputSystem.actions.FindAction("Interact");
+			_deleteAction.performed += DeleteAction_performed;
 		}
 
 		private void OnDisable()
@@ -51,12 +66,13 @@ namespace Project
 			if (_clickAction != null) _clickAction.performed -= ClickAction_performed;
 			if (_previousAction != null) _previousAction.performed -= PreviousAction_performed;
 			if (_nextAction != null) _nextAction.performed -= NextAction_performed;
+			if (_deleteAction != null) _deleteAction.performed -= DeleteAction_performed;
 		}
 
 		private void Update()
 		{
 			if (_clickAction.IsPressed())
-				MoveInstantiatedObject(GetPointerRay());
+				MoveCurrentObject(GetPointerRay());
 		}
 
 		private void ClickAction_performed(InputAction.CallbackContext context)
@@ -64,7 +80,7 @@ namespace Project
 			if (context.action.WasPressedThisFrame())
 			{
 				Ray ray = GetPointerRay();
-				
+
 				if (TryPickObject(ray))
 					return;
 
@@ -74,9 +90,18 @@ namespace Project
 
 			if (context.action.WasReleasedThisFrame())
 			{
-				MoveInstantiatedObject(GetPointerRay());
-				ApplyCachedLayerMasks();
-				Debug.DrawLine(Camera.main.transform.position, _currentObject.transform.position, Color.green, 10);
+				if (_shouldDeleteObject)
+				{
+					DeleteCurrentObject();
+					_shouldDeleteObject = false;
+				}
+				else
+				{
+					MoveCurrentObject(GetPointerRay());
+					ApplyCachedLayerMasks();
+				}
+
+				if (_currentObject) Debug.DrawLine(Camera.main.transform.position, _currentObject.transform.position, Color.green, 10);
 				Notify_OnEndPositiong();
 			}
 		}
@@ -91,6 +116,11 @@ namespace Project
 		{
 			if (!context.action.WasPressedThisFrame()) return;
 			RotateObject(true);
+		}
+
+		private void DeleteAction_performed(InputAction.CallbackContext context)
+		{
+			DeleteCurrentObject();
 		}
 
 		private static Ray GetPointerRay()
@@ -159,7 +189,7 @@ namespace Project
 		{
 			if (_cachedLayerMasks == null) return;
 			foreach (var item in _cachedLayerMasks)
-				item.Key.layer = item.Value;
+				if (item.Key) item.Key.layer = item.Value;
 		}
 
 		private void ApplyIgnoreLayerMask(Collider[] colliders)
@@ -209,7 +239,7 @@ namespace Project
 			}
 		}
 
-		private void MoveInstantiatedObject(Ray ray)
+		private void MoveCurrentObject(Ray ray)
 		{
 			if (!_currentObject) return;
 			if (Physics.Raycast(ray, out RaycastHit hit))
@@ -224,6 +254,12 @@ namespace Project
 		{
 			if (!_currentObject) return;
 			_currentObject.transform.Rotate(new Vector3(0, clockwise ? 90 : -90, 0));
+		}
+
+		private void DeleteCurrentObject()
+		{
+			if (!_currentObject) return;
+			Destroy(_currentObject);
 		}
 		#endregion
 

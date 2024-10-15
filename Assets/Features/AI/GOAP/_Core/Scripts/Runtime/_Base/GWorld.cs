@@ -29,5 +29,11 @@ namespace Project.AI.GOAP
 			if (!_resources.ContainsKey(resource)) return null;
 			return _resources[resource]?.RemoveResource();
 		}
+
+		public static bool RemoveResource(Resource resource, GameObject gameObject)
+		{
+			if (!_resources.ContainsKey(resource)) return false;
+			return _resources[resource]?.RemoveResource(gameObject);
+		}
 	}
 }

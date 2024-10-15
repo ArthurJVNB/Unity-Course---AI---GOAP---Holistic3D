@@ -10,5 +10,10 @@ namespace Project.AI.GOAP
 		{
 			GWorld.AddResource(Resource, gameObject);
 		}
+
+		private void OnDestroy()
+		{
+			GWorld.RemoveResource(Resource, gameObject);
+		}
 	}
 }
