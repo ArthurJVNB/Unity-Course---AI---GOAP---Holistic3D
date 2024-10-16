@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+
 
 #if ENABLE_INPUT_SYSTEM
 using UnityEngine.InputSystem;
@@ -29,6 +31,7 @@ namespace Project
 		private Vector3 _pointerOffset;
 		private Dictionary<GameObject, LayerMask> _cachedLayerMasks;
 		private bool _shouldDeleteObject;
+		private bool _isPointerOverUI;
 
 		private void Reset()
 		{
@@ -45,6 +48,12 @@ namespace Project
 		{
 			OnDisableInternal_Input();
 			UnsubscribeAll();
+		}
+
+		private void Update()
+		{
+			_isPointerOverUI = EventSystem.current.IsPointerOverGameObject();
+			UpdateInternal_Input();
 		}
 
 		public void PointerEnterTrash()
@@ -87,7 +96,6 @@ namespace Project
 			_buttonPrefabSelectors = FindObjectsByType<ButtonPrefabSelector>(FindObjectsSortMode.None);
 		}
 
-
 		#region Input
 		#region Input: New Input System
 #if ENABLE_INPUT_SYSTEM
@@ -119,9 +127,9 @@ namespace Project
 			if (_deleteAction != null) _deleteAction.performed -= DeleteAction_performed;
 		}
 
-		private void Update()
+		private void UpdateInternal_Input()
 		{
-			if (_clickAction.IsPressed())
+			if (_clickAction.IsPressed() && !_isPointerOverUI)
 				MoveCurrentObject(GetPointerRay());
 		}
 
@@ -253,6 +261,7 @@ namespace Project
 		#region Pickable Object
 		private bool TryPickObject(Ray ray)
 		{
+			if (_isPointerOverUI) return false;
 			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
 				PickableObject pickedObject = hit.transform.GetComponentInChildren<PickableObject>();
@@ -275,6 +284,7 @@ namespace Project
 
 		private void InstantiateObject(Ray ray)
 		{
+			if (_isPointerOverUI) return;
 			if (!_prefabToSpawn) return;
 			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
