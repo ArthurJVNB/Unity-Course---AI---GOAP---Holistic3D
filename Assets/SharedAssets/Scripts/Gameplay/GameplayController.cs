@@ -12,13 +12,15 @@ using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Project
 {
-	public class SpawnOnClick : MonoBehaviour
+	public class GameplayController : MonoBehaviour
 	{
 		public event Action<GameObject> OnSpawned;
 		public event Action<GameObject> OnEndPositioning;
 
 		[SerializeField] private GameObject _prefabToSpawn;
 		[SerializeField] private Transform _parent;
+		[ContextMenuItem("Find Button Prefab Selectors", nameof(FindButtonPrefabSelectors))]
+		[SerializeField] private ButtonPrefabSelector[] _buttonPrefabSelectors;
 		[Header("Events")]
 		[Space, SerializeField] private UnityEvent<GameObject> _onSpawned;
 		[Space, SerializeField] private UnityEvent<GameObject> _onEndPositioning;
@@ -27,6 +29,23 @@ namespace Project
 		private Vector3 _pointerOffset;
 		private Dictionary<GameObject, LayerMask> _cachedLayerMasks;
 		private bool _shouldDeleteObject;
+
+		private void Reset()
+		{
+			FindButtonPrefabSelectors();
+		}
+
+		private void OnEnable()
+		{
+			OnEnableInternal_Input();
+			SubscribeAll();
+		}
+
+		private void OnDisable()
+		{
+			OnDisableInternal_Input();
+			UnsubscribeAll();
+		}
 
 		public void PointerEnterTrash()
 		{
@@ -38,6 +57,37 @@ namespace Project
 			_shouldDeleteObject = false;
 		}
 
+		public void SetPrefabToSpawn(GameObject gameObject)
+		{
+			_prefabToSpawn = gameObject;
+		}
+
+		private void SubscribeAll()
+		{
+			if (_buttonPrefabSelectors == null) return;
+			foreach (var button in _buttonPrefabSelectors)
+				button.OnClick += ButtonPrefabSelector_OnClick;
+		}
+
+		private void UnsubscribeAll()
+		{
+			if (_buttonPrefabSelectors == null) return;
+			foreach (var button in _buttonPrefabSelectors)
+				button.OnClick -= ButtonPrefabSelector_OnClick;
+		}
+
+		private void ButtonPrefabSelector_OnClick(GameObject prefab)
+		{
+			SetPrefabToSpawn(prefab);
+		}
+
+		[ContextMenu("Find Button Prefab Selectors")]
+		private void FindButtonPrefabSelectors()
+		{
+			_buttonPrefabSelectors = FindObjectsByType<ButtonPrefabSelector>(FindObjectsSortMode.None);
+		}
+
+
 		#region Input
 		#region Input: New Input System
 #if ENABLE_INPUT_SYSTEM
@@ -46,7 +96,7 @@ namespace Project
 		private InputAction _nextAction;
 		private InputAction _deleteAction;
 
-		private void OnEnable()
+		private void OnEnableInternal_Input()
 		{
 			_clickAction = InputSystem.actions.FindAction("Click");
 			_clickAction.performed += ClickAction_performed;
@@ -61,7 +111,7 @@ namespace Project
 			_deleteAction.performed += DeleteAction_performed;
 		}
 
-		private void OnDisable()
+		private void OnDisableInternal_Input()
 		{
 			if (_clickAction != null) _clickAction.performed -= ClickAction_performed;
 			if (_previousAction != null) _previousAction.performed -= PreviousAction_performed;
@@ -200,7 +250,7 @@ namespace Project
 		}
 		#endregion
 
-		#region Instantiated Object
+		#region Pickable Object
 		private bool TryPickObject(Ray ray)
 		{
 			if (Physics.Raycast(ray, out RaycastHit hit))
@@ -225,10 +275,11 @@ namespace Project
 
 		private void InstantiateObject(Ray ray)
 		{
+			if (!_prefabToSpawn) return;
 			if (Physics.Raycast(ray, out RaycastHit hit))
 			{
 				Vector3 spawnPosition = hit.point;
-				Debug.Log($"spawn at position {spawnPosition} (hit object {hit.transform.name})");
+				Debug.Log($"spawn {_prefabToSpawn.name} at position {spawnPosition} (hit object {hit.transform.name})");
 				Debug.DrawLine(Camera.main.transform.position, hit.point, Color.red, 10);
 				_currentObject = Instantiate(_prefabToSpawn, spawnPosition, _prefabToSpawn.transform.rotation, _parent);
 				_pointerOffset = Vector3.zero;
