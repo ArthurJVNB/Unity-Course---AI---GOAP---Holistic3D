@@ -19,15 +19,24 @@ namespace Project
 		public event Action<GameObject> OnSpawned;
 		public event Action<GameObject> OnEndPositioning;
 
+		[Header("Ray Settings")]
+		[Tooltip("Only applicable to instantiate or move object, not when trying to pick a Pickable Object.")]
+		[SerializeField] private LayerMask _layerMask = 1 << 0;
+		[Min(100)]
+		[SerializeField] private float _rayMaxDistance = 10000;
+		[Space]
 		[SerializeField] private GameObject _prefabToSpawn;
 		[SerializeField] private Transform _parent;
-		[ContextMenuItem("Find Button Prefab Selectors", nameof(FindButtonPrefabSelectors))]
-		[SerializeField] private ButtonPrefabSelector[] _buttonPrefabSelectors;
+		[Space]
+		[ContextMenuItem("Find Prefab Selectors Buttons", nameof(FindButtonPrefabSelectors))]
+		[SerializeField] private ButtonPrefabSelector[] _selectorButtons;
 		[Header("Events")]
 		[Space, SerializeField] private UnityEvent<GameObject> _onSpawned;
 		[Space, SerializeField] private UnityEvent<GameObject> _onEndPositioning;
 
 		private GameObject _currentObject;
+		private Vector3 _cachePosition;
+		private Quaternion _cacheRotation;
 		private Vector3 _pointerOffset;
 		private Dictionary<GameObject, LayerMask> _cachedLayerMasks;
 		private bool _shouldDeleteObject;
@@ -73,15 +82,15 @@ namespace Project
 
 		private void SubscribeAll()
 		{
-			if (_buttonPrefabSelectors == null) return;
-			foreach (var button in _buttonPrefabSelectors)
+			if (_selectorButtons == null) return;
+			foreach (var button in _selectorButtons)
 				button.OnClick += ButtonPrefabSelector_OnClick;
 		}
 
 		private void UnsubscribeAll()
 		{
-			if (_buttonPrefabSelectors == null) return;
-			foreach (var button in _buttonPrefabSelectors)
+			if (_selectorButtons == null) return;
+			foreach (var button in _selectorButtons)
 				button.OnClick -= ButtonPrefabSelector_OnClick;
 		}
 
@@ -90,10 +99,24 @@ namespace Project
 			SetPrefabToSpawn(prefab);
 		}
 
-		[ContextMenu("Find Button Prefab Selectors")]
+		[ContextMenu("Find Prefab Selector Buttons")]
 		private void FindButtonPrefabSelectors()
 		{
-			_buttonPrefabSelectors = FindObjectsByType<ButtonPrefabSelector>(FindObjectsSortMode.None);
+			_selectorButtons = FindObjectsByType<ButtonPrefabSelector>(FindObjectsSortMode.None);
+		}
+
+		private void CacheCurrentObject()
+		{
+			if (!_currentObject) return;
+			_cachePosition = _currentObject.transform.position;
+			_cacheRotation = _currentObject.transform.rotation;
+		}
+
+		private void ApplyCacheOnCurrentObject()
+		{
+			if (!_currentObject) return;
+			_currentObject.transform.position = _cachePosition;
+			_currentObject.transform.rotation = _cacheRotation;
 		}
 
 		#region Input
@@ -155,7 +178,7 @@ namespace Project
 				}
 				else
 				{
-					MoveCurrentObject(GetPointerRay());
+					DropCurrentObject(GetPointerRay());
 					ApplyCachedLayerMasks();
 				}
 
@@ -262,7 +285,7 @@ namespace Project
 		private bool TryPickObject(Ray ray)
 		{
 			if (_isPointerOverUI) return false;
-			if (Physics.Raycast(ray, out RaycastHit hit))
+			if (Physics.Raycast(ray, out RaycastHit hit, _rayMaxDistance))
 			{
 				PickableObject pickedObject = hit.transform.GetComponentInChildren<PickableObject>();
 				if (!pickedObject) pickedObject = hit.transform.GetComponentInParent<PickableObject>();
@@ -276,6 +299,7 @@ namespace Project
 				if (Physics.Raycast(ray, out hit))
 					_pointerOffset = _currentObject.transform.position - hit.point;
 
+				CacheCurrentObject();
 				return true;
 			}
 
@@ -286,7 +310,7 @@ namespace Project
 		{
 			if (_isPointerOverUI) return;
 			if (!_prefabToSpawn) return;
-			if (Physics.Raycast(ray, out RaycastHit hit))
+			if (Physics.Raycast(ray, out RaycastHit hit, _rayMaxDistance, _layerMask))
 			{
 				Vector3 spawnPosition = hit.point;
 				Debug.Log($"spawn {_prefabToSpawn.name} at position {spawnPosition} (hit object {hit.transform.name})");
@@ -295,6 +319,7 @@ namespace Project
 				_pointerOffset = Vector3.zero;
 				Collider[] colliders = _currentObject.GetComponentsInChildren<Collider>();
 				CacheLayerMasks(colliders);
+				CacheCurrentObject();
 				ApplyIgnoreLayerMask(colliders);
 				Notify_OnSpawned();
 			}
@@ -303,7 +328,7 @@ namespace Project
 		private void MoveCurrentObject(Ray ray)
 		{
 			if (!_currentObject) return;
-			if (Physics.Raycast(ray, out RaycastHit hit))
+			if (Physics.Raycast(ray, out RaycastHit hit, _rayMaxDistance, _layerMask))
 			{
 				Vector3 newPosition = hit.point + _pointerOffset;
 				Debug.DrawLine(Camera.main.transform.position, hit.point, Color.blue, 1);
@@ -315,6 +340,18 @@ namespace Project
 		{
 			if (!_currentObject) return;
 			_currentObject.transform.Rotate(new Vector3(0, clockwise ? 90 : -90, 0));
+		}
+
+		private void DropCurrentObject(Ray ray)
+		{
+			if (!_currentObject) return;
+			if (_isPointerOverUI)
+				ApplyCacheOnCurrentObject();
+			else
+			{
+				MoveCurrentObject(ray);
+				CacheCurrentObject();
+			}
 		}
 
 		private void DeleteCurrentObject()

@@ -4077,7 +4077,7 @@ GameObject:
   - component: {fileID: 1521413602}
   - component: {fileID: 1521413601}
   - component: {fileID: 1521413600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5392,9 +5392,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 323e1ffe506b44c41b7057ab486e79e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _rayMaxDistance: 10000
   _prefabToSpawn: {fileID: 0}
   _parent: {fileID: 742992260}
-  _buttonPrefabSelectors:
+  _selectorButtons:
   - {fileID: 97983677570550697}
   - {fileID: 1344629286}
   _onSpawned:
