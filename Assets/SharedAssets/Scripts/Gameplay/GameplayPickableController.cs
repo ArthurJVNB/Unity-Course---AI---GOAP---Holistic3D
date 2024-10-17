@@ -14,7 +14,7 @@ using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace Project
 {
-	public class GameplayController : MonoBehaviour
+	public class GameplayPickableController : MonoBehaviour
 	{
 		public event Action<GameObject> OnSpawned;
 		public event Action<GameObject> OnEndPositioning;
