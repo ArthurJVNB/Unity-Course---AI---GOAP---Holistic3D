@@ -352,6 +352,7 @@ namespace Project
 				MoveCurrentObject(ray);
 				CacheCurrentObject();
 			}
+			_currentObject = null;
 		}
 
 		private void DeleteCurrentObject()
