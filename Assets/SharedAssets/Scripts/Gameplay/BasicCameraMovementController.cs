@@ -21,6 +21,8 @@ namespace Project
 		private InputAction _lookAction;
 
 		private Vector3 _currentVelocity;
+		private Vector2 _moveInput;
+		private Vector2 _lookInput;
 
 		private void Reset()
 		{
@@ -32,7 +34,7 @@ namespace Project
 		{
 			_moveAction = InputSystem.actions.FindAction(_moveActionName);
 			_lookAction = InputSystem.actions.FindAction(_lookActionName);
-			
+
 		}
 
 		private void Start()
@@ -67,12 +69,12 @@ namespace Project
 					addSource = true;
 				}
 			}
-			
+
 			if (addSource)
 			{
 				parentConstraint = _camera.gameObject.AddComponent<ParentConstraint>();
 				int index = parentConstraint.AddSource(source);
-				parentConstraint.SetTranslationOffset(index, _camera.transform.position -  _focusObject.transform.position);
+				parentConstraint.SetTranslationOffset(index, _camera.transform.position - _focusObject.transform.position);
 				parentConstraint.SetRotationOffset(index, _camera.transform.rotation.eulerAngles - _focusObject.transform.rotation.eulerAngles);
 				parentConstraint.constraintActive = true;
 			}
@@ -80,45 +82,55 @@ namespace Project
 
 		private void OnEnable()
 		{
-			//if (_moveAction != null) _moveAction.performed += MoveAction_performed;
+			if (_moveAction != null)
+			{
+				_moveAction.performed += MoveAction_performed;
+				_moveAction.canceled += MoveAction_canceled;
+			}
 			if (_lookAction != null) _lookAction.performed += LookAction_performed;
 		}
 
 		private void OnDisable()
 		{
-			//if (_moveAction != null) _moveAction.performed -= MoveAction_performed;
+			if (_moveAction != null)
+			{
+				_moveAction.performed -= MoveAction_performed;
+				_moveAction.canceled -= MoveAction_canceled;
+			}
 			if (_lookAction != null) _lookAction.performed -= LookAction_performed;
 		}
 
 		private void Update()
 		{
 			Move();
+			Look();
+		}
+
+		private void MoveAction_performed(InputAction.CallbackContext context) => CacheInput(context, ref _moveInput);
+		private void MoveAction_canceled(InputAction.CallbackContext context) => CacheInput(context, ref _moveInput);
+		private void LookAction_performed(InputAction.CallbackContext context) => CacheInput(context, ref _lookInput);
+
+		private void CacheInput<T>(InputAction.CallbackContext context, ref T cache) where T : struct
+		{
+			cache = context.ReadValue<T>();
 		}
 
 		private void Move()
 		{
-			var input = _moveAction.ReadValue<Vector2>();
 			var forward = Vector3.ProjectOnPlane(_camera.transform.forward, Vector3.up).normalized;
 			var right = Vector3.ProjectOnPlane(_camera.transform.right, Vector3.up).normalized;
 			Debug.DrawLine(_focusObject.transform.position, _focusObject.transform.position + forward, Color.blue, .1f);
 			Debug.DrawLine(_focusObject.transform.position, _focusObject.transform.position + right, Color.red, .1f);
 
 			Vector3 current = _focusObject.transform.position;
-			Vector3 delta = (forward * input.y + right * input.x) * _maxSpeed;
+			Vector3 delta = (forward * _moveInput.y + right * _moveInput.x) * _maxSpeed;
 			Vector3 target = current + delta;
 			_focusObject.transform.position = Vector3.SmoothDamp(current, target, ref _currentVelocity, _smoothTime, _maxSpeed, Time.deltaTime);
 		}
 
-		//private void MoveAction_performed(InputAction.CallbackContext context)
-		//{
-		//	Debug.Log("Move");
-		//	Vector2 input = context.ReadValue<Vector2>();
-		//	_object.transform.position += new Vector3(input.x, 0, input.y) * Time.deltaTime;
-		//}
-
-		private void LookAction_performed(InputAction.CallbackContext context)
+		private void Look()
 		{
-			Debug.Log("Look");
+
 		}
 
 	}
