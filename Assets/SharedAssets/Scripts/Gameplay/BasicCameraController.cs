@@ -10,14 +10,19 @@ namespace Project
 	{
 		[SerializeField] private string _moveActionName = "Player/Move";
 		[SerializeField] private string _lookActionName = "Player/Look";
+		[SerializeField] private string _zoomActionName = "Player/Zoom";
 		[Space]
 		[SerializeField] private Camera _camera;
 		[SerializeField] private GameObject _focusObject;
+		[Range(0.1f, 50)]
+		[SerializeField] private float _desiredDistance = 10;
 		[Header("Move Settings")]
 		[SerializeField] private float _maxMoveSpeed = 5;
 		[Min(0)]
 		[SerializeField] private float _moveSmoothTime = .5f;
 		[Header("Look Settings")]
+		[SerializeField] private bool _invertLookHorizontal;
+		[SerializeField] private bool _invertLookVertical = true;
 		[Range(0, 3)]
 		[SerializeField] private float _rotationSensitivity = .5f;
 		[Range(0, 10)]
@@ -29,9 +34,11 @@ namespace Project
 
 		private InputAction _moveAction;
 		private InputAction _lookAction;
+		private InputAction _zoomAction;
 
 		private Vector2 _moveInput;
 		private Vector2 _lookInput;
+		private Vector2 _zoomInput;
 
 		private Vector3 _currentVelocity;
 		private Vector3 _targetRotation;
@@ -46,13 +53,14 @@ namespace Project
 		{
 			_moveAction = InputSystem.actions.FindAction(_moveActionName);
 			_lookAction = InputSystem.actions.FindAction(_lookActionName);
+			_zoomAction = InputSystem.actions.FindAction(_zoomActionName);
 
 			_targetRotation = _focusObject.transform.rotation.eulerAngles;
 		}
 
 		private void Start()
 		{
-			ValidateParentConstraint();
+			//ValidateParentConstraint();
 		}
 
 		private void OnEnable()
@@ -62,10 +70,17 @@ namespace Project
 				_moveAction.performed += MoveAction_performed;
 				_moveAction.canceled += MoveAction_canceled;
 			}
+
 			if (_lookAction != null)
 			{
 				_lookAction.performed += LookAction_performed;
 				_lookAction.canceled += LookAction_canceled;
+			}
+
+			if (_zoomAction != null)
+			{
+				_zoomAction.performed += ZoomAction_performed;
+				_zoomAction.canceled += ZoomAction_canceled;
 			}
 		}
 
@@ -87,6 +102,7 @@ namespace Project
 		{
 			Move();
 			Look();
+			Zoom();
 		}
 
 		private void ValidateParentConstraint()
@@ -133,6 +149,9 @@ namespace Project
 		private void LookAction_performed(InputAction.CallbackContext context) => CacheInput(context, ref _lookInput);
 		private void LookAction_canceled(InputAction.CallbackContext context) => CacheInput(context, ref _lookInput);
 
+		private void ZoomAction_performed(InputAction.CallbackContext context) => CacheInput(context, ref _zoomInput);
+		private void ZoomAction_canceled(InputAction.CallbackContext context) => CacheInput(context, ref _zoomInput);
+
 		private void CacheInput<T>(InputAction.CallbackContext context, ref T cache) where T : struct
 		{
 			cache = context.ReadValue<T>();
@@ -149,14 +168,22 @@ namespace Project
 			Vector3 delta = (forward * _moveInput.y + right * _moveInput.x) * _maxMoveSpeed;
 			Vector3 target = current + delta;
 			_focusObject.transform.position = Vector3.SmoothDamp(current, target, ref _currentVelocity, _moveSmoothTime, _maxMoveSpeed, Time.deltaTime);
+			_camera.transform.position = _focusObject.transform.position - _focusObject.transform.forward * _desiredDistance;
 		}
 
 		private void Look()
 		{
-			_targetRotation += new Vector3(_lookInput.y, _lookInput.x,0) * _rotationSensitivity;
+			if (_invertLookHorizontal) _lookInput.x *= -1f;
+			if (_invertLookVertical) _lookInput.y *= -1f;
+			_targetRotation += new Vector3(_lookInput.y, _lookInput.x, 0) * _rotationSensitivity;
 			_targetRotation.x = Mathf.Clamp(_targetRotation.x, _minPitchAngle, _maxPitchAngle);
 			_focusObject.transform.rotation = Quaternion.Slerp(_focusObject.transform.rotation, Quaternion.Euler(_targetRotation), Time.deltaTime * _rotationSmoothTime);
+			_camera.transform.LookAt(_focusObject.transform);
 		}
 
+		private void Zoom()
+		{
+
+		}
 	}
 }
