@@ -368,8 +368,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292988602}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071066, z: -0, w: 0.707107}
-  m_LocalPosition: {x: -16.04, y: 1, z: -19.8}
+  m_LocalRotation: {x: 0.3463468, y: -0.6159683, z: 0.34551474, w: 0.6174517}
+  m_LocalPosition: {x: -12.051037, y: 1.5990734, z: -17.448845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1905,8 +1905,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.3463472, y: -0.6159679, z: 0.34551495, w: 0.61745167}
-  m_LocalPosition: {x: 5.6740284, y: 30.61321, z: -17.49148}
+  m_LocalRotation: {x: 0.34634686, y: -0.6159682, z: 0.34551474, w: 0.61745167}
+  m_LocalPosition: {x: 5.6740284, y: 30.61321, z: -17.491478}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1963,15 +1963,15 @@ ParentConstraint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Weight: 1
-  m_TranslationAtRest: {x: 5.6740284, y: 30.61321, z: -17.49148}
-  m_RotationAtRest: {x: 58.57872, y: -89.86215, z: 0}
+  m_TranslationAtRest: {x: 5.6740284, y: 30.61321, z: -17.491478}
+  m_RotationAtRest: {x: 58.578674, y: -89.86218, z: 0}
   m_TranslationOffsets:
-  - {x: 2.3085327, y: 29.61321, z: -21.714027}
+  - {x: 2.3085346, y: 29.61321, z: -21.714027}
   m_RotationOffsets:
-  - {x: 58.578743, y: 0.13781105, z: 0}
+  - {x: 58.578674, y: 0.13778922, z: 0}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -5563,14 +5563,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveActionName: Player/Move
   _lookActionName: Player/Look
+  _zoomActionName: Player/Zoom
   _camera: {fileID: 963194227}
   _focusObject: {fileID: 292988602}
+  _desiredDistance: 34
   _maxMoveSpeed: 10
   _moveSmoothTime: 1
+  _invertLookHorizontal: 0
+  _invertLookVertical: 0
   _rotationSensitivity: 0.11
   _rotationSmoothTime: 5
-  _minPitchAngle: -35
-  _maxPitchAngle: 30
+  _minPitchAngle: 20
+  _maxPitchAngle: 70
 --- !u!1 &1999376859
 GameObject:
   m_ObjectHideFlags: 0

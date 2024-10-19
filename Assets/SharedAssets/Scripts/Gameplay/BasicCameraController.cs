@@ -42,6 +42,9 @@ namespace Project
 
 		private Vector3 _currentVelocity;
 		private Vector3 _targetRotation;
+		private float _targetDistance;
+
+		private Vector3 DesiredDistanceOffset => _focusObject.transform.forward * _desiredDistance;
 
 		private void Reset()
 		{
@@ -55,7 +58,8 @@ namespace Project
 			_lookAction = InputSystem.actions.FindAction(_lookActionName);
 			_zoomAction = InputSystem.actions.FindAction(_zoomActionName);
 
-			_targetRotation = _focusObject.transform.rotation.eulerAngles;
+			_targetRotation = _camera.transform.rotation.eulerAngles;
+			_focusObject.transform.rotation = _camera.transform.rotation;
 		}
 
 		private void Start()
@@ -168,8 +172,9 @@ namespace Project
 			Vector3 delta = (forward * _moveInput.y + right * _moveInput.x) * _maxMoveSpeed;
 			Vector3 target = current + delta;
 			_focusObject.transform.position = Vector3.SmoothDamp(current, target, ref _currentVelocity, _moveSmoothTime, _maxMoveSpeed, Time.deltaTime);
-			_camera.transform.position = _focusObject.transform.position - _focusObject.transform.forward * _desiredDistance;
+			_camera.transform.position = _focusObject.transform.position - DesiredDistanceOffset;
 		}
+
 
 		private void Look()
 		{
