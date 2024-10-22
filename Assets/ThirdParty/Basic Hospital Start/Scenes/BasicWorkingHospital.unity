@@ -5570,11 +5570,17 @@ MonoBehaviour:
   _maxMoveSpeed: 10
   _moveSmoothTime: 1
   _invertLookHorizontal: 0
-  _invertLookVertical: 0
+  _invertLookVertical: 1
   _rotationSensitivity: 0.11
   _rotationSmoothTime: 5
-  _minPitchAngle: 20
+  _minPitchAngle: 5
   _maxPitchAngle: 70
+  _invertZoomInput: 1
+  _zoomSpeed: 5
+  _maxZoomSmoothSpeed: 10
+  _zoomSmoothTime: 0.25
+  _minDistance: 10
+  _maxDistance: 40
 --- !u!1 &1999376859
 GameObject:
   m_ObjectHideFlags: 0

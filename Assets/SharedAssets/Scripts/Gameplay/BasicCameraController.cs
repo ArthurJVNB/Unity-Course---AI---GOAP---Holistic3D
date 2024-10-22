@@ -8,18 +8,22 @@ namespace Project
 {
 	public class BasicCameraController : MonoBehaviour
 	{
+		[Header("Input Settings")]
 		[SerializeField] private string _moveActionName = "Player/Move";
 		[SerializeField] private string _lookActionName = "Player/Look";
 		[SerializeField] private string _zoomActionName = "Player/Zoom";
-		[Space]
+
+		[Header("Basic Settings")]
 		[SerializeField] private Camera _camera;
 		[SerializeField] private GameObject _focusObject;
 		[Range(0.1f, 50)]
 		[SerializeField] private float _desiredDistance = 10;
+
 		[Header("Move Settings")]
-		[SerializeField] private float _maxMoveSpeed = 5;
+		[SerializeField] private float _maxMoveSpeed = 10;
 		[Min(0)]
-		[SerializeField] private float _moveSmoothTime = .5f;
+		[SerializeField] private float _moveSmoothTime = 1;
+
 		[Header("Look Settings")]
 		[SerializeField] private bool _invertLookHorizontal;
 		[SerializeField] private bool _invertLookVertical = true;
@@ -32,6 +36,17 @@ namespace Project
 		[Range(-180, 180)]
 		[SerializeField] private float _maxPitchAngle = 90;
 
+		[Header("Zoom Settings")]
+		[SerializeField] private bool _invertZoomInput = true;
+		[Min(0)]
+		[SerializeField] private float _zoomSpeed = 5;
+		[SerializeField] private float _maxZoomSmoothSpeed = 10;
+		[SerializeField] private float _zoomSmoothTime = 1;
+		[Min(0)]
+		[SerializeField] private float _minDistance = 10;
+		[Min(0)]
+		[SerializeField] private float _maxDistance = 40;
+
 		private InputAction _moveAction;
 		private InputAction _lookAction;
 		private InputAction _zoomAction;
@@ -42,6 +57,9 @@ namespace Project
 
 		private Vector3 _currentVelocity;
 		private Vector3 _targetRotation;
+
+		private float _currentDistance;
+		private float _currentDistanceVelocity;
 		private float _targetDistance;
 
 		private Vector3 DesiredDistanceOffset => _focusObject.transform.forward * _desiredDistance;
@@ -58,6 +76,8 @@ namespace Project
 			_lookAction = InputSystem.actions.FindAction(_lookActionName);
 			_zoomAction = InputSystem.actions.FindAction(_zoomActionName);
 
+			_currentDistance = _desiredDistance;
+			_targetDistance = _desiredDistance;
 			_targetRotation = _camera.transform.rotation.eulerAngles;
 			_focusObject.transform.rotation = _camera.transform.rotation;
 		}
@@ -188,7 +208,14 @@ namespace Project
 
 		private void Zoom()
 		{
-
+			if (_zoomInput.y != 0)
+			{
+				Debug.Log("Zoom");
+				float delta = _zoomInput.y * (_invertZoomInput ? -1 : 1) * _zoomSpeed;
+				_targetDistance = Mathf.Clamp(_desiredDistance + delta, _minDistance, _maxDistance);
+			}
+			_currentDistance = Mathf.SmoothDamp(_currentDistance, _targetDistance, ref _currentDistanceVelocity, _zoomSmoothTime, _maxZoomSmoothSpeed, Time.deltaTime);
+			_desiredDistance = _currentDistance;
 		}
 	}
 }
