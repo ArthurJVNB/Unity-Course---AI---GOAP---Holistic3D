@@ -20,6 +20,7 @@ namespace Project
 		[SerializeField] private float _desiredDistance = 10;
 
 		[Header("Move Settings")]
+		[Min(0)]
 		[SerializeField] private float _maxMoveSpeed = 10;
 		[Min(0)]
 		[SerializeField] private float _moveSmoothTime = 1;
@@ -28,23 +29,23 @@ namespace Project
 		[SerializeField] private bool _invertLookHorizontal;
 		[SerializeField] private bool _invertLookVertical = true;
 		[Range(0, 3)]
-		[SerializeField] private float _rotationSensitivity = .5f;
+		[SerializeField] private float _rotationSensitivity = .11f;
 		[Range(0, 10)]
 		[SerializeField] private float _rotationSmoothTime = 5f;
 		[Range(-180, 180)]
-		[SerializeField] private float _minPitchAngle = 10;
+		[SerializeField] private float _minPitchAngle = 20;
 		[Range(-180, 180)]
-		[SerializeField] private float _maxPitchAngle = 90;
+		[SerializeField] private float _maxPitchAngle = 70;
 
 		[Header("Zoom Settings")]
 		[SerializeField] private bool _invertZoomInput = true;
 		[Min(0)]
 		[SerializeField] private float _zoomSpeed = 5;
+		[SerializeField] private float _zoomSmoothTime = .25f;
 		[SerializeField] private float _maxZoomSmoothSpeed = 10;
-		[SerializeField] private float _zoomSmoothTime = 1;
-		[Min(0)]
-		[SerializeField] private float _minDistance = 10;
-		[Min(0)]
+		[Range(0,50)]
+		[SerializeField] private float _minDistance = 5;
+		[Range(0, 50)]
 		[SerializeField] private float _maxDistance = 40;
 
 		private InputAction _moveAction;
@@ -210,7 +211,6 @@ namespace Project
 		{
 			if (_zoomInput.y != 0)
 			{
-				Debug.Log("Zoom");
 				float delta = _zoomInput.y * (_invertZoomInput ? -1 : 1) * _zoomSpeed;
 				_targetDistance = Mathf.Clamp(_desiredDistance + delta, _minDistance, _maxDistance);
 			}

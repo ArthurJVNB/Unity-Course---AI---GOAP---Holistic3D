@@ -314,7 +314,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 292988602}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5573,13 +5573,13 @@ MonoBehaviour:
   _invertLookVertical: 1
   _rotationSensitivity: 0.11
   _rotationSmoothTime: 5
-  _minPitchAngle: 5
+  _minPitchAngle: 20
   _maxPitchAngle: 70
   _invertZoomInput: 1
   _zoomSpeed: 5
-  _maxZoomSmoothSpeed: 10
   _zoomSmoothTime: 0.25
-  _minDistance: 10
+  _maxZoomSmoothSpeed: 10
+  _minDistance: 5
   _maxDistance: 40
 --- !u!1 &1999376859
 GameObject:
