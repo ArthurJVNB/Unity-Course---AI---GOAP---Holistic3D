@@ -33,6 +33,7 @@ namespace Project.AI.GOAP
 				const float MIN_REACHED_DISTANCE = 2f;
 				if (_currentAction.Agent.hasPath && _currentAction.Agent.remainingDistance < MIN_REACHED_DISTANCE)
 					return true;
+				if (!_currentAction.Target) return false;
 				return Vector3.Distance(_currentAction.Agent.transform.position, _currentAction.Target.transform.position) < MIN_REACHED_DISTANCE;
 			}
 		}

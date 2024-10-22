@@ -17,7 +17,7 @@ namespace Project.AI.GOAP
         public GameObject FindItemWithTag(string tag)
         {
             foreach (GameObject item in _items)
-                if (item.CompareTag(tag)) return item;
+                if (item && item.CompareTag(tag)) return item;
             return null;
         }
 

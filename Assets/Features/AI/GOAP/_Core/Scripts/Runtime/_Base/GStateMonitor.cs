@@ -12,10 +12,11 @@ namespace Project.AI.GOAP
         [SerializeField] private float _stateDecayRate; // how much the state strength decay over time
         [SerializeField] private WorldStates _beliefs;
         [SerializeField] private GameObject _resourcePrefab; // what to instantiate when the state strength comes to zero
-        [SerializeField] private Vector3 _instantiationOffset;
+		[Tooltip("Optional\n\nIf Resource Prefab already is a ResourceObject, Resource Data isn't needed.")]
+		[SerializeField] private ResourceData _resourceData; // resource to put the instantiated gameobject
+		[SerializeField] private Vector3 _instantiationOffset;
         // [SerializeField] private string _queueName; // queue of resources to put the instantiated gameobject (already done by _resource)
         // [SerializeField] private string _worldState; // world state that will be triggered upon the instantiation of the gameobject (already done by _resource)
-        [SerializeField] private Resource _resource; // resource to put the instantiated gameobject
         [SerializeField] private GAction _actionThatSatisfies; // action to monitor if it's already trying to satisfy the same state
 
         private GAgent _agent;
@@ -52,7 +53,7 @@ namespace Project.AI.GOAP
                     _stateFound = false;
                     ResetStateStrength();
                     _agent.RemoveState(_stateToLookFor);
-                    GWorld.AddResource(_resource, item);
+                    if (_resourceData) GWorld.AddResource(_resourceData, item);
 				}
             }
 		}
